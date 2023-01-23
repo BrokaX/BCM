@@ -1,0 +1,203 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.container {
+  margin-top: 20px;
+
+}
+.centers{
+  margin: 10px;
+  max-width: 600px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.btns{
+  justify-content: center;
+  
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.cardi{
+  display: flex;
+
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.head{
+ padding: 50px;
+}
+body {
+
+  background-color: rgb(40, 48, 57);
+  color: wheat;
+}
+
+input {
+  background: rgb(59, 58, 58) !important;
+  color: white !important;
+}
+button img {
+  width:60px;
+}
+
+#messanger{
+  background-color:#0084ff ;
+}
+input::placeholder {
+  color: rgb(164, 152, 130) !important;
+}
+
+.boxOF {
+  border: 1px solid #e5e5e5;
+  height: 400px;
+  overflow: auto;
+  padding: 10px;
+}
+
+ul li {
+  list-style: disc;
+}
+
+.checkbox {
+  margin: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+#send {
+  width: 300px;
+}
+#main{
+  height: 110vh;
+
+}
+
+.carding {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column ;
+  margin: 10px;
+}
+
+.cardi button {
+  display: block;
+  margin-top: 10px;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+
+}
+
+.contentSection {
+  width: 400px;
+  padding: 0 25px;
+}
+
+.code {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#logo {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+svg {
+  position: relative;
+  top: 0;
+
+}
+
+#logo img {
+  width: 200px;
+  height: 200px;
+  margin-top: 20px;
+  border-radius: 50%;
+}
+
+.code img {
+  width: 160px;
+}
+
+.main {
+  margin: 10px;
+  padding: 20px;
+  /* border: 1px solid; */
+  box-shadow: 1px 1px 30px 1px rgb(85, 85, 85);
+  border-radius: 5px;
+background-color: rgb(34 39 54);
+display: flex;
+justify-content: space-around;
+flex-wrap: wrap;
+
+}
+.mail img{width: 60px !important;}
+.insta img{
+ width: 40px;
+ 
+}
+.insta{
+  background-color: rgb(248, 248, 248);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.youtube img{
+  width: 63px !important;
+
+}
+.whatsapp{
+  background: #25d366;
+}
+.whatsapp img{
+  border-radius: 50px;
+}
+.call{
+  background-color: #f3f5f5 !important;
+}
+.ista:hover {
+  color: white !important;
+}
+
+.website {
+  background-color: #1a8ac8;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.website img{
+  width: 40px !important;
+  filter: invert(100%);
+}
+.alert span{
+  margin-left: 7px !important;
+}
+#delete{
+
+  right: 13px;
+  z-index: 1;
+}
+
+#show{
+  margin-top: 10px;
+  max-width: 200px;
+}
+#carder{
+  background-color: rgb(40, 48, 57);
+}
