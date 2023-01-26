@@ -1,203 +1,324 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap");
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  position: relative;
 }
 
-.container {
-  margin-top: 20px;
-
+.App-logo {
+  padding: 0.6rem;
+  width: 12rem;
+  animation: shake 15s ease-in-out;
+  animation-iteration-count: infinite;
 }
-.centers{
-  margin: 10px;
-  max-width: 600px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.App-Link {
+  text-decoration: none;
 }
-.btns{
-  justify-content: center;
-  
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+.App-Link:hover {
+  background: rgb(201, 186, 186, 0.2);
 }
-.cardi{
-  display: flex;
-
-  justify-content: space-around;
-  align-items: center;
-  flex-wrap: wrap;
+.Nav-text:hover {
+  text-decoration: none;
 }
-.head{
- padding: 50px;
+.Nav-text {
+  font-size: 1rem;
+  color: #f6bb06;
+  padding: 1.2rem 5rem;
 }
-body {
-
-  background-color: rgb(40, 48, 57);
-  color: wheat;
-}
-
-input {
-  background: rgb(59, 58, 58) !important;
-  color: white !important;
-}
-button img {
-  width:60px;
-}
-
-#messanger{
-  background-color:#0084ff ;
-}
-input::placeholder {
-  color: rgb(164, 152, 130) !important;
-}
-
-.boxOF {
-  border: 1px solid #e5e5e5;
-  height: 400px;
-  overflow: auto;
-  padding: 10px;
-}
-
-ul li {
-  list-style: disc;
-}
-
-.checkbox {
-  margin: 10px 0;
+.Nav-bar {
+  background-color: rgb(5, 27, 44);
+  overflow: hidden;
   display: flex;
   justify-content: space-between;
-  flex-wrap: wrap;
-}
-
-#send {
-  width: 300px;
-}
-#main{
-  height: 110vh;
-
-}
-
-.carding {
-  display: flex;
-  justify-content: flex-end;
-  flex-direction: column ;
-  margin: 10px;
-}
-
-.cardi button {
-  display: block;
-  margin-top: 10px;
-  width: 90px;
-  height: 90px;
-  border-radius: 50%;
-
-}
-
-.contentSection {
-  width: 400px;
-  padding: 0 25px;
-}
-
-.code {
-  display: flex;
-  justify-content: center;
   align-items: center;
+  font-family: oswald;
+  font-weight: 100;
+  word-spacing: 10px;
 }
-
-#logo {
+.Nav-links {
   display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 10px;
 }
-
-svg {
-  position: relative;
+.sticky {
+  position: fixed;
   top: 0;
-
+}
+.Landing-cover {
+  display: flex;
+  height: 100vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.2)),
+    url("../public/assets/Landing-BG.jpg");
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-#logo img {
-  width: 200px;
-  height: 200px;
-  margin-top: 20px;
+.Slogan-CTA {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: justify;
+  padding: 1rem;
+}
+
+.Title-slogan {
+  font-size: calc(12px + 2rem);
+  color: white;
+  background: linear-gradient(
+    to right,
+    hsl(0, 0%, 100%) 0,
+    hsl(0, 0%, 29%) 10%,
+    hsl(0, 0%, 100%) 20%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 3s infinite linear;
+}
+
+.Slogan-slogan {
+  margin-bottom: 2rem;
+  color: #f6bb06;
+  letter-spacing: 0.2rem;
+}
+
+.Slogan-paragraph {
+  font-size: 16px;
+  text-transform: uppercase;
+  padding: 0 20%;
+  margin-bottom: calc(20px + 1rem);
+  color: white;
+}
+
+.Slogan-button {
+  font-size: 18px;
+  font-weight: 500;
+  padding: 0.5% 1%;
+  color: #051b2c;
+  background-color: #f6bb06;
+}
+.Slogan-button:hover,
+.Slogan-button:focus,
+.Slogan-button:active {
+  outline: 1px solid white;
+  color: white;
+  background: none;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+.Our-products {
+  height: auto;
+  background-color: #f6bb06;
+  display: grid;
+  align-items: center;
+  text-align: center;
+  grid-template-rows: repeat(2, fr);
+}
+.Title-products {
+  font-size: calc(12px + 2rem);
+  color: #04233a;
+  margin-top: 2%;
+}
+
+:root {
+  --surface-color: #f6bb06;
+  --curve: 40;
+}
+
+.cards {
+  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(50px, 300px));
+  gap: 2rem;
+  margin: 2% 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.card {
+  position: relative;
+  display: block;
+  height: 100%;
+  border-radius: 30px;
+  overflow: hidden;
+  text-decoration: none;
+  border: none;
+}
+
+.card__image {
+  width: 100%;
+  height: auto;
+}
+
+.card__overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  border-radius: 30px;
+  background-color: #051b2c;
+  transform: translateY(100%);
+  transition: 0.2s ease-in-out;
+}
+
+.card:hover .card__overlay {
+  transform: translateY(0);
+}
+
+.card__header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 2em;
+  padding: 1em;
+  border-radius: 30px 0 0 0;
+  background-color: #f6bb06;
+  transform: translateY(-100%);
+  transition: 0.2s ease-in-out;
+}
+
+.card:hover .card__header {
+  transform: translateY(0);
+}
+
+.card__thumb {
+  flex-shrink: 0;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
 }
 
-.code img {
-  width: 160px;
+.card__title {
+  font-size: 14px;
+  margin: 0 0 0.3em;
+  color: #051b2c;
 }
 
-.main {
-  margin: 10px;
-  padding: 20px;
-  /* border: 1px solid; */
-  box-shadow: 1px 1px 30px 1px rgb(85, 85, 85);
-  border-radius: 5px;
-background-color: rgb(34 39 54);
-display: flex;
-justify-content: space-around;
-flex-wrap: wrap;
+.card__tagline {
+  display: block;
+  margin: 1em 0;
+  font-family: "MockFlowFont";
+  font-size: 0.8em;
+  color: #051b2c;
+}
 
+.card__status {
+  font-size: 0.8em;
+  color: #ffffff;
 }
-.mail img{width: 60px !important;}
-.insta img{
- width: 40px;
- 
+
+.card__description {
+  padding: 0 2em 0;
+  margin: 0;
+  color: #f6bb06;
+  font-family: "MockFlowFont";
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
 }
-.insta{
-  background-color: rgb(248, 248, 248);
-  display: flex;
+
+.Contact-us {
+  height: auto;
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url("../public/assets/cover-bg-2.jpg");
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   justify-content: center;
-  align-items: center;
-}
-.youtube img{
-  width: 63px !important;
-
-}
-.whatsapp{
-  background: #25d366;
-}
-.whatsapp img{
-  border-radius: 50px;
-}
-.call{
-  background-color: #f3f5f5 !important;
-}
-.ista:hover {
-  color: white !important;
 }
 
-.website {
-  background-color: #1a8ac8;
-  border: none;
+.Contact-us-form {
   display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.website img{
-  width: 40px !important;
-  filter: invert(100%);
-}
-.alert span{
-  margin-left: 7px !important;
-}
-#delete{
-
-  right: 13px;
-  z-index: 1;
+  flex-direction: column;
+  padding: 2% 20%;
 }
 
-#show{
-  margin-top: 10px;
-  max-width: 200px;
+.Contact-us-title {
+  color: white;
+  padding: 1%;
 }
-#carder{
-  background-color: rgb(40, 48, 57);
+.Contact-us-input {
+  border: solid 1px #f6bb06;
+  color: white;
+  padding: 1%;
+  border-radius: 15px;
+  background-color: #051b2c7c;
+}
+.Contact-us-label {
+  color: white;
+  padding: 1%;
+  border-radius: 15px;
+}
+.Contact-us-submit {
+  margin: 2% 0;
+  font-size: 18px;
+  font-weight: 500;
+  padding: 0.5% 1%;
+  color: #051b2c;
+  border-radius: 15px;
+  background-color: #f6bb06;
+}
+
+.Contact-us-submit:hover,
+.Contact-us-submit:focus,
+.Contact-us-submit:active {
+  outline: 1px solid #f6bb06;
+  color: white;
+  background: #051b2c7c;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Animations*/
+
+@keyframes shake {
+  0% {
+    transform: translate(1px, 1px) rotate(0deg);
+  }
+  10% {
+    transform: translate(-1px, -2px) rotate(-1deg);
+  }
+  20% {
+    transform: translate(-3px, 0px) rotate(1deg);
+  }
+  30% {
+    transform: translate(3px, 2px) rotate(0deg);
+  }
+  40% {
+    transform: translate(1px, -1px) rotate(1deg);
+  }
+  50% {
+    transform: translate(-1px, 2px) rotate(-1deg);
+  }
+  60% {
+    transform: translate(-3px, 1px) rotate(0deg);
+  }
+  70% {
+    transform: translate(3px, 1px) rotate(-1deg);
+  }
+  80% {
+    transform: translate(-1px, -1px) rotate(1deg);
+  }
+  90% {
+    transform: translate(1px, 2px) rotate(0deg);
+  }
+  100% {
+    transform: translate(1px, -2px) rotate(-1deg);
+  }
+}
+
+@keyframes shine {
+  0% {
+    background-position: 0;
+  }
+  60% {
+    background-position: 600px;
+  }
+  100% {
+    background-position: 800px;
+  }
 }

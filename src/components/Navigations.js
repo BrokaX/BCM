@@ -1,9 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import NavBar from "./NavBar";
 function NavigationButtons() {
     return (
     
             <div className="card text-center bg-dark">
+                <NavBar/>
                 <div className="card-header">
                     &copy; Myla Paduit
                 </div>
