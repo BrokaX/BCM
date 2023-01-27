@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react';
 import validator from 'validator';
-import { storage } from '../firebase-config'
+import FirebaseService from "../services/firebase";
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage'
 import { Link } from "react-router-dom";
 function Form() {
@@ -30,7 +30,7 @@ function Form() {
     }
   }
   const handleSubmit = () => {
-    const imageRef = ref(storage, image.name)
+    const imageRef = ref(FirebaseService.storage, image.name)
     uploadBytes(imageRef, image).then(() => {
       getDownloadURL(imageRef).then((url) => {
         setUrl(url)

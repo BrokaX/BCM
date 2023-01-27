@@ -28,7 +28,7 @@
 }
 
 .open-menu-box {
-  content: url("../public/assets/menu-icon.png");
+  content: url("./assets/menu-icon.png");
   background-color: #0d395a;
   z-index: 3;
   position: fixed;
@@ -40,7 +40,7 @@
   visibility: hidden;
 }
 .open-menu-box:checked {
-  content: url("../public/assets/menu-icon-x.png");
+  content: url("./assets/menu-icon-x.png");
 }
 .open-menu-box:checked ~ .Nav-bar {
   transform: translateX(0%);
@@ -71,7 +71,7 @@
   display: flex;
   height: 93vh;
   background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.2)),
-    url("../public/assets/Landing-BG.jpg");
+    url("./assets/Landing-BG.jpg");
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
@@ -249,7 +249,7 @@
 .Contact-us {
   height: auto;
   background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-    url("../public/assets/cover-bg-2.jpg");
+    url("./assets/cover-bg-2.jpg");
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;

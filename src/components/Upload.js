@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { storage } from '../firebase-config'
+import { storage } from "../services/firebase";
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage'
 function Upload(props) {
     const [image, setImage] = useState(null)
