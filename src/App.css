@@ -26,7 +26,30 @@
   color: #f6bb06;
   padding: 1.2rem 5rem;
 }
+
+.open-menu-box {
+  content: url("../public/assets/menu-icon.png");
+  background-color: #0d395a;
+  z-index: 3;
+  position: fixed;
+  width: 6%;
+  height: 6%;
+  cursor: pointer;
+  top: 0;
+  left: 0px;
+  visibility: hidden;
+}
+.open-menu-box:checked {
+  content: url("../public/assets/menu-icon-x.png");
+}
+.open-menu-box:checked ~ .Nav-bar {
+  transform: translateX(0%);
+  
+}
 .Nav-bar {
+  transition: 1s ease-in-out;
+  width: 100%;
+  z-index: 2;
   background-color: rgb(5, 27, 44);
   overflow: hidden;
   display: flex;
@@ -35,6 +58,7 @@
   font-family: oswald;
   font-weight: 100;
   word-spacing: 10px;
+  box-shadow: 0px 0px 36px #ffffff25;
 }
 .Nav-links {
   display: flex;
@@ -45,7 +69,7 @@
 }
 .Landing-cover {
   display: flex;
-  height: 100vh;
+  height: 93vh;
   background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.2)),
     url("../public/assets/Landing-BG.jpg");
   background-attachment: fixed;
@@ -188,6 +212,8 @@
   width: 50px;
   height: 50px;
   border-radius: 50%;
+  animation: shake 15s ease-in-out;
+  animation-iteration-count: infinite;
 }
 
 .card__title {
@@ -273,6 +299,25 @@
   transition: all 0.2s ease-in-out;
 }
 
+.footer {
+  height: 50vh;
+  width: 100%;
+  background-color: #051b2c;
+  bottom: 0;
+  box-shadow: 1px 1px 16px #ffffff25;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+.footer-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1% 20%;
+  color: white;
+}
+
 /* Animations*/
 
 @keyframes shake {
@@ -320,5 +365,32 @@
   }
   100% {
     background-position: 800px;
+  }
+}
+
+/*Media Queries for responsiveness*/
+
+@media screen and (max-width: 1020px) {
+  .App-logo {
+    width: 120px;
+  }
+  .Nav-links {
+    flex-direction: column;
+  }
+  .Nav-bar {
+    text-align: center;
+    height: 100vh;
+    justify-content: center;
+    justify-items: center;
+    position: fixed;
+    top: 0;
+    padding-top: 20%;
+    transform: translateX(-100%);
+    display: block;
+    width: 80%;
+    background-color: #04233ac5;
+  }
+  .open-menu-box{
+    visibility: visible;
   }
 }

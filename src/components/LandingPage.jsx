@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import NavBar from './NavBar';
 export default function LandingPage() {
   return (
     <div>
@@ -23,7 +24,7 @@ export default function LandingPage() {
           <Link to=""></Link>
         </div>
       </div>
-
+      <NavBar/>
       {/*** Our Products***/}
 
       <div className="Our-products">
@@ -171,7 +172,17 @@ export default function LandingPage() {
       </div>
 
       {/* Footer */}
-      <div className="footer"></div>
+      <footer className="footer">
+        <div className="footer-container">
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+          <div>Hello</div>
+        </div>
+        <div className="social-media-icons">
+
+        </div>
+      </footer>
     </div>
   );
 }

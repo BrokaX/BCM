@@ -13,7 +13,7 @@ return (
   <>
 <BrowserRouter>
 <Routes>
-      <Route path="/" element={<><NavBar/><LandingPage/></>} />
+      <Route path="/" element={<><LandingPage/></>} />
       <Route path="form"/>
       <Route path="/read" element={<><NavigationButtons/><Read/> </>} />
       <Route path="/result" element={<><NavigationButtons/><Result/></>} />
