@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap");
-
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital@1&display=swap');
 * {
   margin: 0;
   padding: 0;
@@ -44,7 +44,6 @@
 }
 .open-menu-box:checked ~ .Nav-bar {
   transform: translateX(0%);
-  
 }
 .Nav-bar {
   transition: 1s ease-in-out;
@@ -55,7 +54,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-family: oswald;
+  font-family: 'Josefin Sans';
   font-weight: 100;
   word-spacing: 10px;
   box-shadow: 0px 0px 36px #ffffff25;
@@ -108,7 +107,8 @@
 }
 
 .Slogan-paragraph {
-  font-size: 16px;
+  font-size: 14px;
+  font-family:'Josefin Sans' ;
   text-transform: uppercase;
   padding: 0 20%;
   margin-bottom: calc(20px + 1rem);
@@ -246,6 +246,7 @@
   overflow: hidden;
 }
 
+/****************************** Form Starts Here ***********************/
 .Contact-us {
   height: auto;
   background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
@@ -317,6 +318,160 @@
   padding: 1% 20%;
   color: white;
 }
+/* Business Card Page */
+
+.Business-card-form {
+  margin: 4rem 2rem;
+  padding: 2%;
+  border: solid red;
+}
+
+.Business-card-preview {
+  margin: 4rem 2rem;
+  padding: 2%;
+  border: solid red;
+}
+.Business-card-preview-container{  /* This is the parent for user details*/
+  position: relative;
+}
+.main-card {
+  width: 100%;
+}
+
+.Card-preview-info{
+  border: solid green;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  padding: 1%;
+  color: white;
+}
+/***********************User Details Preview***********/
+.username{
+  font-family: 'Josefin Sans';
+  position: absolute;
+  font-size: calc(45px + 0.1rem);
+  font-weight: bold ;
+  text-transform: uppercase;
+  left: 11%;
+  top: 15%;
+}
+.business-title{
+  position: absolute;
+  text-transform: capitalize;
+  font-family: 'Josefin Sans';
+  font-size: calc(15px + 0.1rem);
+  top: 28%;
+  left: 11%;
+}
+.user-email{
+  position: absolute;
+  font-size: calc(15px + 0.1rem);
+  text-transform: lowercase;
+  top: 45%;
+  left: 16%;
+}
+
+.user-phone{
+  position: absolute;
+  font-size: calc(15px + 0.1rem);
+  top: 50%;
+  left: 16%;
+}
+.user-youtube{
+  position: absolute;
+  font-size: calc(15px + 0.1rem);
+  text-transform: lowercase;
+  top: 60%;
+  left: 16%;
+}
+
+.user-facebook{
+  position: absolute;
+  font-size: calc(15px + 0.1rem);
+  text-transform: lowercase;
+  top: 65%;
+  left: 16%;
+}
+
+.user-twitter {
+  position: absolute;
+  font-size: calc(15px + 0.1rem);
+  top: 75%;
+  left: 16%;
+}
+.user-instagram{
+  position: absolute;
+  font-size: calc(15px + 0.1rem);
+  text-transform: lowercase;
+  top: 80%;
+  left: 16%;
+}
+.user-website{
+  position: absolute;
+  font-size: calc(18px + 0.1rem);
+  text-transform: lowercase;
+  top: 90%;
+  left: 4%;
+}
+.user-whatsapp{
+  position: absolute;
+  font-size: calc(15px + 0.1rem);
+  left: 51%;
+  top: 92%;
+}
+
+
+
+
+
+.User-profile-pic {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 15%;
+  height:calc(100px + 5%);
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+
+/******************* Carousel ***********************/
+
+
+
+.BC-templates{
+  display: block;
+}
+.carousel{
+  width: 100%;
+  height: 20%;
+  margin: 0 auto;
+  padding: 2% 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.carousel img{
+  width: 20%;
+  cursor: pointer;
+  transition: transform .2s
+}
+.carousel img:hover{
+  transform: scale(1.2);
+}
+
+
+
+
+
+
+
+
+
+
+
 
 /* Animations*/
 
@@ -390,7 +545,7 @@
     width: 80%;
     background-color: #04233ac5;
   }
-  .open-menu-box{
+  .open-menu-box {
     visibility: visible;
   }
 }
