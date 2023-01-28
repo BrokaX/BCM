@@ -149,7 +149,9 @@
   --surface-color: #f6bb06;
   --curve: 40;
 }
-
+.fa-regular, .fa-bring-front{
+  font-size: 34px;
+}
 .cards {
   justify-content: center;
   display: grid;

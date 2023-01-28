@@ -1,6 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import NavBar from './NavBar';
+import logo from "../assets/App-Logo.png";
+import BC1 from "../assets/BC1.png"
+import BC2 from "../assets/BC2.jpg"
+import BC3 from "../assets/BC3.png"
+import BC4 from "../assets/BC4.png"
+
 export default function LandingPage() {
   return (
     <div>
@@ -34,7 +40,7 @@ export default function LandingPage() {
           <div>
             <a href="http://localhost:3000" class="card">
               <img
-                src="../assets/Card3.png"
+                src={BC1}
                 class="card__image"
                 alt="Business card"
               />
@@ -42,7 +48,35 @@ export default function LandingPage() {
                 <div class="card__header">
                   <img
                     class="card__thumb"
-                    src="../assets/App-Logo.png"
+                    src={logo}
+                    alt="Logo"
+                  />
+                  <div class="card__header-text">
+                    <h3 class="card__title">Simple Design</h3>
+                    <span class="card__status">Dark & Gold</span>
+                  </div>
+                </div>
+                <p class="card__description">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                </p>
+              </div>
+            </a>
+          </div>
+          {/** End of CARD **/}
+          {/** CARD **/}
+          <div>
+            <a href="http://localhost:3000" class="card">
+            <i class="fa-regular fa-bring-front"></i>
+              <img
+                src= {BC2}
+                class="card__image"
+                alt="Business card"
+              />
+              <div class="card__overlay">
+                <div class="card__header">
+                  <img
+                    class="card__thumb"
+                    src={logo}
                     alt="Logo"
                   />
                   <div class="card__header-text">
@@ -61,7 +95,7 @@ export default function LandingPage() {
           <div>
             <a href="http://localhost:3000" class="card">
               <img
-                src="../assets/Card3.png"
+                src={BC3}
                 class="card__image"
                 alt="Business card"
               />
@@ -69,7 +103,7 @@ export default function LandingPage() {
                 <div class="card__header">
                   <img
                     class="card__thumb"
-                    src="../assets/App-Logo.png"
+                    src={logo}
                     alt="Logo"
                   />
                   <div class="card__header-text">
@@ -88,7 +122,7 @@ export default function LandingPage() {
           <div>
             <a href="http://localhost:3000" class="card">
               <img
-                src="../assets/Card3.png"
+                src={BC4}
                 class="card__image"
                 alt="Business card"
               />
@@ -96,34 +130,7 @@ export default function LandingPage() {
                 <div class="card__header">
                   <img
                     class="card__thumb"
-                    src="../assets/App-Logo.png"
-                    alt="Logo"
-                  />
-                  <div class="card__header-text">
-                    <h3 class="card__title">Simple Design</h3>
-                    <span class="card__status">Dark & Gold</span>
-                  </div>
-                </div>
-                <p class="card__description">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                </p>
-              </div>
-            </a>
-          </div>
-          {/** End of CARD **/}
-          {/** CARD **/}
-          <div>
-            <a href="http://localhost:3000" class="card">
-              <img
-                src="../assets/Card3.png"
-                class="card__image"
-                alt="Business card"
-              />
-              <div class="card__overlay">
-                <div class="card__header">
-                  <img
-                    class="card__thumb"
-                    src="../assets/App-Logo.png"
+                    src={logo}
                     alt="Logo"
                   />
                   <div class="card__header-text">
