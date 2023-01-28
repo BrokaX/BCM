@@ -296,7 +296,7 @@ function Form() {
               />
             </div>
           </form>
-          <div className="card" id="carder">
+          <div className="" id="carder">
             <div className="mb-3">
               <label htmlFor="formFile" className="form-label">
                 Choose a Logo File

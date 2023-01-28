@@ -1,11 +1,19 @@
 @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital@1&display=swap');
+
+/************************* Variables ************************/
+:root {
+  --surface-color: #f6bb06;
+  --bg1-color: #121416;
+  --curve: 40;
+}
+/************************* Reset ************************/
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
+/************************* Nav-Bar ************************/
 .App-logo {
   padding: 0.6rem;
   width: 12rem;
@@ -49,7 +57,7 @@
   transition: 1s ease-in-out;
   width: 100%;
   z-index: 2;
-  background-color: rgb(5, 27, 44);
+  background-color: var(--bg1-color);
   overflow: hidden;
   display: flex;
   justify-content: space-between;
@@ -66,6 +74,9 @@
   position: fixed;
   top: 0;
 }
+
+/************************* Landing Page ************************/
+
 .Landing-cover {
   display: flex;
   height: 93vh;
@@ -119,7 +130,7 @@
   font-size: 18px;
   font-weight: 500;
   padding: 0.5% 1%;
-  color: #051b2c;
+  color: var(--bg1-color);
   background-color: #f6bb06;
 }
 .Slogan-button:hover,
@@ -145,10 +156,7 @@
   margin-top: 2%;
 }
 
-:root {
-  --surface-color: #f6bb06;
-  --curve: 40;
-}
+
 .fa-regular, .fa-bring-front{
   font-size: 34px;
 }
@@ -184,7 +192,7 @@
   right: 0;
   z-index: 1;
   border-radius: 30px;
-  background-color: #051b2c;
+  background-color: var(--bg1-color);
   transform: translateY(100%);
   transition: 0.2s ease-in-out;
 }
@@ -221,7 +229,7 @@
 .card__title {
   font-size: 14px;
   margin: 0 0 0.3em;
-  color: #051b2c;
+  color: var(--bg1-color);
 }
 
 .card__tagline {
@@ -229,7 +237,7 @@
   margin: 1em 0;
   font-family: "MockFlowFont";
   font-size: 0.8em;
-  color: #051b2c;
+  color: var(--bg1-color);
 }
 
 .card__status {
@@ -248,7 +256,7 @@
   overflow: hidden;
 }
 
-/****************************** Form Starts Here ***********************/
+/*************************** Contact us Form Starts Here ***********************/
 .Contact-us {
   height: auto;
   background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
@@ -275,7 +283,7 @@
   color: white;
   padding: 1%;
   border-radius: 15px;
-  background-color: #051b2c7c;
+  background-color: var(--bg1-color)7c;
 }
 .Contact-us-label {
   color: white;
@@ -287,7 +295,7 @@
   font-size: 18px;
   font-weight: 500;
   padding: 0.5% 1%;
-  color: #051b2c;
+  color: var(--bg1-color);
   border-radius: 15px;
   background-color: #f6bb06;
 }
@@ -297,15 +305,15 @@
 .Contact-us-submit:active {
   outline: 1px solid #f6bb06;
   color: white;
-  background: #051b2c7c;
+  background: var(--bg1-color)7c;
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
 }
-
+/************************* Footer ************************/
 .footer {
   height: 50vh;
   width: 100%;
-  background-color: #051b2c;
+  background-color: var(--bg1-color);
   bottom: 0;
   box-shadow: 1px 1px 16px #ffffff25;
   display: grid;
@@ -320,28 +328,29 @@
   padding: 1% 20%;
   color: white;
 }
-/* Business Card Page */
-
+/*************** Business Card Page 'Form.js' *******************/
+.Business-card-container{
+  margin: 0;
+  padding: 5%;
+}
 .Business-card-form {
-  margin: 4rem 2rem;
+  margin: 0 2rem;
   padding: 2%;
-  border: solid red;
 }
 
 .Business-card-preview {
-  margin: 4rem 2rem;
+  margin: 0 2rem;
   padding: 2%;
-  border: solid red;
 }
 .Business-card-preview-container{  /* This is the parent for user details*/
   position: relative;
+  
 }
 .main-card {
   width: 100%;
 }
 
-.Card-preview-info{
-  border: solid green;
+.Card-preview-info{padding: 5%;
   position: absolute;
   width: 100%;
   height: 100%;
@@ -447,7 +456,7 @@
   display: block;
 }
 .carousel{
-  width: 100%;
+  width: 85%;
   height: 20%;
   margin: 0 auto;
   padding: 2% 0;
@@ -457,6 +466,7 @@
 }
 .carousel img{
   width: 20%;
+  padding: 0 1%;
   cursor: pointer;
   transition: transform .2s
 }
