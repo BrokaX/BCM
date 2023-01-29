@@ -1,17 +1,34 @@
 import React from "react";
 import { useState } from "react";
-import validator from "validator";
-import FirebaseService from "../services/firebase";
-import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import { Link } from "react-router-dom";
-function Form() {
-  const [isChecked, setIsChecked] = useState(false);
-  const [failalert, setFailAlert] = useState(false);
-  const [submited, setSubmited] = useState(false);
-  const [errors, setErrors] = useState({});
+// import FirebaseService from "../services/firebase";
+// import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import Carousel from "./Carousel";
+
+import { QRCodeCanvas } from "qrcode.react";
+
+export default function CardForm() {
+  const slides = [
+    { url: "./assets/cards/Sample-card-1.png", title: "Card 1" },
+    { url: "./assets/cards/Sample-card-2.png", title: "Card 2" },
+    { url: "./assets/cards/Sample-card-1.png", title: "Card 4" },
+    { url: "./assets/cards/Sample-card-1.png", title: "Card 5" },
+    { url: "./assets/cards/Sample-card-1.png", title: "Card 6" },
+  ];
   const [image, setImage] = useState(null);
   const [url, setUrl] = useState("");
-  const [show, setShow] = useState(false);
+
+  const gnerateQR = (e) => {
+    setUrl(e.target.value);
+  };
+  const qrcode = (
+    <QRCodeCanvas
+      id="qrCode"
+      value={url}
+      size={50}
+      bgColor={"#fff"}
+      level={"H"}
+    />
+  );
   const [user, setUser] = useState({
     name: "",
     slogan: "",
@@ -30,127 +47,17 @@ function Form() {
     setPicpreview(URL.createObjectURL(file));
     setImage(e.target.files[0]);
   };
-  const handleSubmit = () => {
-    const imageRef = ref(FirebaseService.storage, image.name);
-    uploadBytes(imageRef, image)
-      .then(() => {
-        getDownloadURL(imageRef)
-          .then((url) => {
-            setUrl(url);
-          })
-          .catch((eror) => {
-            console.log(eror);
-          });
-        setImage(null);
-      })
-      .catch((eror) => {
-        console.log(eror);
-      });
-  };
-
   let name, value;
   const getUserData = (event) => {
     name = event.target.name;
     value = event.target.value;
     setUser({ ...user, [name]: value });
   };
-  const submit = async (e) => {
-    let newErrors = {};
-    if (!validator.isEmail(user.email)) {
-      newErrors.email = "Invalid email";
-    }
-    if (!validator.isMobilePhone(user.phone)) {
-      newErrors.phone = "Invalid phone number";
-    }
-
-    if (user.name === "") {
-      newErrors.name = "Name is required";
-    }
-    if (user.slogan === "") {
-      newErrors.name = "Name is required";
-    }
-    e.preventDefault();
-    if (Object.keys(newErrors).length === 0) {
-      const result = fetch(
-        "https://react-crud-1bcbc-default-rtdb.firebaseio.com/react-crud.json",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            name: user.name,
-            slogan: user.slogan,
-            email: user.email,
-            phone: user.phone,
-            youtube: user.youtube,
-            facebook: user.facebook,
-            twitter: user.twitter,
-            instagram: user.instagram,
-            website: user.website,
-            whatsapp: user.whatsapp,
-            imageURL: url,
-          }),
-        }
-      );
-      if (result) {
-        setUser({
-          name: "",
-          slogan: "",
-          email: "",
-          phone: "",
-          youtube: "",
-          facebook: "",
-          twitter: "",
-          instagram: "",
-          website: "",
-          whatsapp: "",
-        });
-        setSubmited(true);
-        if (submit) {
-          setShow(true);
-        }
-      }
-    } else {
-      setErrors(newErrors);
-
-      setFailAlert(true);
-
-      console.log(errors);
-    }
-  };
+  function forQR() {
+    return Object.values(user);
+  }
   return (
-    <>
-      {failalert && (
-        <div
-          className="alert alert-danger alert-dismissible fade show"
-          role="alert"
-        >
-          <strong>Error!</strong>
-          <span>Please Fill the Form Correctly</span>
-          <button
-            type="button"
-            className="btn-close"
-            data-bs-dismiss="alert"
-            aria-label="Close"
-          ></button>
-        </div>
-      )}
-      {submited && (
-        <div
-          className="alert alert-success alert-dismissible fade show"
-          role="alert"
-        >
-          <strong>Success</strong> Your Data is Stored
-          <button
-            type="button"
-            className="btn-close"
-            data-bs-dismiss="alert"
-            aria-label="Close"
-          ></button>
-        </div>
-      )}
-
+    <div className="Form-cover">
       <div className="row no-gutters Business-card-container">
         <div className="col Business-card-form">
           <h1>Create-Business Card</h1>
@@ -309,21 +216,10 @@ function Form() {
                 type="file"
                 id="formFile"
               />
-              <button
-                id="upload"
-                className="btn btn-primary my-4 float-end"
-                onClick={handleSubmit}
-              >
+
+              <button id="upload" className="btn btn-primary my-4 float-end">
                 Upload
               </button>
-              {url && (
-                <img
-                  id="show"
-                  src={url}
-                  className="img-thumbnail"
-                  alt="Logo Will be Here"
-                ></img>
-              )}
             </div>
           </div>
         </div>
@@ -334,155 +230,133 @@ function Form() {
           <div className="Card-preview">
             <h1>Card Preview</h1>
             <div className="Business-card-preview-container">
-              <img
-                className="main-card"
-                src="./assets/cards/Sample-card-1.png"
-                alt="card preview"
-              />
-              <div className="Card-preview-info">
-                <h4 className="User-info username">{user.name}
-                </h4>
-                <h4 className="User-info business-title">
-                  {user.slogan}
-                 
-                </h4>
-                <h4 className="User-info user-email">
-                  {user.email? (
-                    <>
-                      <i class="fa-sharp fa-solid fa-envelope">
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      </i>
-                      {user.email}
-                    </>
-                  ) : (
-                    ""
-                  )} 
-                </h4>
-                <h4 className="User-info user-phone">
-                  {user.phone? (
-                    <>
-                     <i class="fa-solid fa-phone-volume">
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      </i>
-                      {user.phone}
-                    </>
-                  ) : (
-                    ""
-                  )} 
-                </h4>
-                <h4 className="User-info user-youtube">
-                  {user.youtube? (
-                    <>
-                      <i class="fa-brands fa-youtube">
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      </i>
-                      {user.youtube}
-                    </>
-                  ) : (
-                    ""
-                  )} 
-                </h4>
-                <h4 className="User-info user-facebook">
-                  {user.facebook? (
-                    <>
-                      <i class="fa-brands fa-facebook">
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      </i>
-                      {user.facebook}
-                    </>
-                  ) : (
-                    ""
-                  )} 
-                </h4>
-                <h4 className="User-info user-twitter">
-                  {user.twitter ? (
-                    <>
-                      <i class="fa-brands fa-twitter">
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      </i>
-                      {user.twitter}
-                    </>
-                  ) : (
-                    ""
-                  )} 
-                </h4>
-                <h4 className="User-info user-instagram">
-                  {user.instagram? (
-                    <>
-                     <i class="fa-brands fa-instagram">
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      </i>
-                      {user.instagram}
-                    </>
-                  ) : (
-                    ""
-                  )} 
-                </h4>
-                <h4 className="User-info user-website">
-                  {user.website? (
-                    <>
-                      <i class="fa-solid fa-globe">
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      </i>
-                      {user.website}
-                    </>
-                  ) : (
-                    ""
-                  )} 
-                </h4>
-                <h4 className="User-info user-whatsapp">
-                  {user.whatsapp? (
-                    <>
-                      <i class="fa-brands fa-whatsapp">
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      </i>
-                      {user.whatsapp}
-                    </>
-                  ) : (
-                    ""
-                  )} 
-                </h4>
-                <img
-                  className="User-profile-pic"
-                  src={picPreview}
-                  alt="user profile"
-                />
-              </div>
-            </div>
+              <Carousel />
 
-            {/* Cards Selection */}
-            <div className="BC-templates">
-              <div className="carousel">
-                <img
-                  src="./assets/cards/Sample-card-1.png"
-                  alt="card preview"
-                />
-                <img
-                  src="./assets/cards/Sample-card-2.png"
-                  alt="card preview"
-                />
-                <img
-                  src="./assets/cards/Sample-card-2.png"
-                  alt="card preview"
-                />
-                <img
-                  src="./assets/cards/Sample-card-2.png"
-                  alt="card preview"
-                />
-                <img
-                  src="./assets/cards/Sample-card-2.png"
-                  alt="card preview"
-                />
-              </div>
-              <div></div>
-              <div></div>
-              <div></div>
-            </div>
+            <div className="Card-preview-info">
+              <h4 className="User-info username">{user.name}</h4>
+              <h4 className="User-info business-title">{user.slogan}</h4>
+              <h4 className="User-info user-email">
+                {user.email ? (
+                  <>
+                    <i className="fa-sharp fa-solid fa-envelope">
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </i>
+                    {user.email}
+                  </>
+                ) : (
+                  ""
+                )}
+              </h4>
+              <h4 className="User-info user-phone">
+                {user.phone ? (
+                  <>
+                    <i className="fa-solid fa-phone-volume">
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </i>
+                    {user.phone}
+                  </>
+                ) : (
+                  ""
+                )}
+              </h4>
+              <h4 className="User-info user-youtube">
+                {user.youtube ? (
+                  <>
+                    <i className="fa-brands fa-youtube">
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </i>
+                    {user.youtube}
+                  </>
+                ) : (
+                  ""
+                )}
+              </h4>
+              <h4 className="User-info user-facebook">
+                {user.facebook ? (
+                  <>
+                    <i className="fa-brands fa-facebook">
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </i>
+                    {user.facebook}
+                  </>
+                ) : (
+                  ""
+                )}
+              </h4>
+              <h4 className="User-info user-twitter">
+                {user.twitter ? (
+                  <>
+                    <i className="fa-brands fa-twitter">
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </i>
+                    {user.twitter}
+                  </>
+                ) : (
+                  ""
+                )}
+              </h4>
+              <h4 className="User-info user-instagram">
+                {user.instagram ? (
+                  <>
+                    <i className="fa-brands fa-instagram">
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </i>
+                    {user.instagram}
+                  </>
+                ) : (
+                  ""
+                )}
+              </h4>
+              <h4 className="User-info user-website">
+                {user.website ? (
+                  <>
+                    <i className="fa-solid fa-globe">
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </i>
+                    {user.website}
+                  </>
+                ) : (
+                  ""
+                )}
+              </h4>
+              <h4 className="User-info user-whatsapp">
+                {user.whatsapp ? (
+                  <>
+                    <i className="fa-brands fa-whatsapp">
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </i>
+                    {user.whatsapp}
+                  </>
+                ) : (
+                  ""
+                )}
+              </h4>
+              {/* <input
+               type="text"
+               name="QRCode"
+              value={Object.values(user)}
+                onChange={gnerateQR}
+                disabled
+                hidden
+              /> */}
+              {/* <textarea
+                  value={forQR()}
+                  onChange={(e) => setUrl(e.target.url)}
+                >
+                  {this.state.text}{" "}
+                </textarea>
+                <div>{qrcode} </div> */}
+               <img
+                className="User-profile-pic"
+                src={picPreview}
+                alt="user profile"
+              />
+            </div></div>
           </div>
+
+          {/* Cards Selection */}
         </div>
       </div>
-    </>
+    </div>
   );
 }
-
-export default Form;

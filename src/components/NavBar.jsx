@@ -41,7 +41,7 @@ function NavBar() {
   };
 
   return (
-    <div>
+    <div className="Nav-bar-container">
       <input type="checkbox" className="open-menu-box" />
       {/*-- Logo Navbar --*/}
       <div className="Nav-bar-logo">
@@ -49,21 +49,21 @@ function NavBar() {
           <img className="App-logo" src={logo} alt="logo" />
         </Link>
         {isLoggedIn ? (
-        <div>
-          <button className="m-3 btn btn-sm btn-warning" onClick={handleLogout} >
-            <Link to="/login" className="App-Link">
+        <div className="Login-buttons">
+          <button className="User-button" onClick={handleLogout} >
+            <Link to="/login" className="App-Link User-button">
               <h5 className="text-dark">Logout</h5>
             </Link>
           </button>
         </div>
         ) : (
-        <div>
-          <button className="btn btn-sm btn-warning">
+        <div className="Login-buttons">
+          <button className="User-button">
             <Link to="/login" className="App-Link">
               <h5 className="text-dark">Login</h5>
             </Link>
           </button>
-          <button className="m-3 btn btn-sm btn-warning">
+          <button className="User-button">
             <Link to="/register" className="App-Link">
               <h5 className="text-dark">Register</h5>
             </Link>
