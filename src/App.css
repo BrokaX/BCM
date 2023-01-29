@@ -1,9 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital@1&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital@1&display=swap");
 
 /************************* Variables ************************/
 :root {
-  --surface-color: #f6bb06;
+  --surface-color: #e4a11b;
   --bg1-color: #121416;
   --curve: 40;
 }
@@ -12,6 +12,10 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+/************************* Body ************************/
+body, html{
+  background-color: var(--bg1-color);
 }
 /************************* Nav-Bar ************************/
 .App-logo {
@@ -31,13 +35,17 @@
 }
 .Nav-text {
   font-size: 1rem;
-  color: #f6bb06;
+  color: var(--surface-color);
   padding: 1.2rem 5rem;
 }
-
+.Nav-text2 {
+  font-size: 1.2rem;
+  color: var(--surface-color);
+  padding: 0.5rem 3rem;
+}
 .open-menu-box {
   content: url("./assets/menu-icon.png");
-  background-color: #0d395a;
+  background-color: var(--bg1-color);
   z-index: 3;
   position: fixed;
   width: 6%;
@@ -50,10 +58,10 @@
 .open-menu-box:checked {
   content: url("./assets/menu-icon-x.png");
 }
-.open-menu-box:checked ~ .Nav-bar {
+.open-menu-box:checked ~ .Nav-bar-menu {
   transform: translateX(0%);
 }
-.Nav-bar {
+.Nav-bar-logo {
   transition: 1s ease-in-out;
   width: 100%;
   z-index: 2;
@@ -62,7 +70,21 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-family: 'Josefin Sans';
+  font-family: "Josefin Sans";
+  font-weight: 100;
+  word-spacing: 10px;
+  box-shadow: 0px 0px 36px #ffffff25;
+}
+.Nav-bar-menu {
+  transition: 1s ease-in-out;
+  width: 100%;
+  z-index: 2;
+  background-color: var(--bg1-color);
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "Josefin Sans";
   font-weight: 100;
   word-spacing: 10px;
   box-shadow: 0px 0px 36px #ffffff25;
@@ -113,13 +135,13 @@
 
 .Slogan-slogan {
   margin-bottom: 2rem;
-  color: #f6bb06;
+  color: var(--surface-color);
   letter-spacing: 0.2rem;
 }
 
 .Slogan-paragraph {
   font-size: 14px;
-  font-family:'Josefin Sans' ;
+  font-family: "Josefin Sans";
   text-transform: uppercase;
   padding: 0 20%;
   margin-bottom: calc(20px + 1rem);
@@ -129,9 +151,11 @@
 .Slogan-button {
   font-size: 18px;
   font-weight: 500;
-  padding: 0.5% 1%;
+  padding: 1% 2%;
   color: var(--bg1-color);
-  background-color: #f6bb06;
+  background-color: var(--surface-color);
+  border-radius: 2px;
+  border: none;
 }
 .Slogan-button:hover,
 .Slogan-button:focus,
@@ -144,7 +168,7 @@
 }
 .Our-products {
   height: auto;
-  background-color: #f6bb06;
+  background-color: var(--surface-color);
   display: grid;
   align-items: center;
   text-align: center;
@@ -156,8 +180,8 @@
   margin-top: 2%;
 }
 
-
-.fa-regular, .fa-bring-front{
+.fa-regular,
+.fa-bring-front {
   font-size: 34px;
 }
 .cards {
@@ -208,7 +232,7 @@
   gap: 2em;
   padding: 1em;
   border-radius: 30px 0 0 0;
-  background-color: #f6bb06;
+  background-color: var(--surface-color);
   transform: translateY(-100%);
   transition: 0.2s ease-in-out;
 }
@@ -248,7 +272,7 @@
 .card__description {
   padding: 0 2em 0;
   margin: 0;
-  color: #f6bb06;
+  color: var(--surface-color);
   font-family: "MockFlowFont";
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -279,11 +303,16 @@
   padding: 1%;
 }
 .Contact-us-input {
-  border: solid 1px #f6bb06;
+  border: solid 1px var(--surface-color);
   color: white;
-  padding: 1%;
+  padding: 1% 2% 1% 2%;
   border-radius: 15px;
-  background-color: var(--bg1-color)7c;
+  background-color: var(--bg1-color) 7c;
+}
+.Contact-us-input:focus {
+  background-color: #ffffff25;
+  color: var(--bg1-color);
+  outline: none;
 }
 .Contact-us-label {
   color: white;
@@ -294,21 +323,23 @@
   margin: 2% 0;
   font-size: 18px;
   font-weight: 500;
-  padding: 0.5% 1%;
+  padding: 0.7% 1%;
   color: var(--bg1-color);
+  border: 1px solid var(--surface-color);
   border-radius: 15px;
-  background-color: #f6bb06;
+  background-color: var(--surface-color);
 }
 
 .Contact-us-submit:hover,
 .Contact-us-submit:focus,
 .Contact-us-submit:active {
-  outline: 1px solid #f6bb06;
+  outline: none;
   color: white;
-  background: var(--bg1-color)7c;
+  background: var(--bg1-color) 7c;
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
 }
+
 /************************* Footer ************************/
 .footer {
   height: 50vh;
@@ -328,8 +359,11 @@
   padding: 1% 20%;
   color: white;
 }
+.footer-bg {
+  background-color: rgba(0, 0, 0, 0.2);
+}
 /*************** Business Card Page 'Form.js' *******************/
-.Business-card-container{
+.Business-card-container {
   margin: 0;
   padding: 5%;
 }
@@ -342,15 +376,16 @@
   margin: 0 2rem;
   padding: 2%;
 }
-.Business-card-preview-container{  /* This is the parent for user details*/
+.Business-card-preview-container {
+  /* This is the parent for user details*/
   position: relative;
-  
 }
 .main-card {
   width: 100%;
 }
 
-.Card-preview-info{padding: 5%;
+.Card-preview-info {
+  padding: 5%;
   position: absolute;
   width: 100%;
   height: 100%;
@@ -359,24 +394,24 @@
   color: white;
 }
 /***********************User Details Preview***********/
-.username{
-  font-family: 'Josefin Sans';
+.username {
+  font-family: "Josefin Sans";
   position: absolute;
   font-size: calc(45px + 0.1rem);
-  font-weight: bold ;
+  font-weight: bold;
   text-transform: uppercase;
   left: 11%;
   top: 15%;
 }
-.business-title{
+.business-title {
   position: absolute;
   text-transform: capitalize;
-  font-family: 'Josefin Sans';
+  font-family: "Josefin Sans";
   font-size: calc(15px + 0.1rem);
   top: 28%;
   left: 11%;
 }
-.user-email{
+.user-email {
   position: absolute;
   font-size: calc(15px + 0.1rem);
   text-transform: lowercase;
@@ -384,13 +419,13 @@
   left: 16%;
 }
 
-.user-phone{
+.user-phone {
   position: absolute;
   font-size: calc(15px + 0.1rem);
   top: 50%;
   left: 16%;
 }
-.user-youtube{
+.user-youtube {
   position: absolute;
   font-size: calc(15px + 0.1rem);
   text-transform: lowercase;
@@ -398,7 +433,7 @@
   left: 16%;
 }
 
-.user-facebook{
+.user-facebook {
   position: absolute;
   font-size: calc(15px + 0.1rem);
   text-transform: lowercase;
@@ -412,50 +447,43 @@
   top: 75%;
   left: 16%;
 }
-.user-instagram{
+.user-instagram {
   position: absolute;
   font-size: calc(15px + 0.1rem);
   text-transform: lowercase;
   top: 80%;
   left: 16%;
 }
-.user-website{
+.user-website {
   position: absolute;
   font-size: calc(18px + 0.1rem);
   text-transform: lowercase;
   top: 90%;
   left: 4%;
 }
-.user-whatsapp{
+.user-whatsapp {
   position: absolute;
   font-size: calc(15px + 0.1rem);
   left: 51%;
   top: 92%;
 }
 
-
-
-
-
 .User-profile-pic {
   position: absolute;
   top: 1rem;
   right: 1rem;
   width: 15%;
-  height:calc(100px + 5%);
+  height: calc(100px + 5%);
   object-fit: cover;
   border-radius: 50%;
 }
 
-
 /******************* Carousel ***********************/
 
-
-
-.BC-templates{
+.BC-templates {
   display: block;
 }
-.carousel{
+.carousel {
   width: 85%;
   height: 20%;
   margin: 0 auto;
@@ -464,26 +492,15 @@
   flex-direction: row;
   justify-content: space-between;
 }
-.carousel img{
+.carousel img {
   width: 20%;
   padding: 0 1%;
   cursor: pointer;
-  transition: transform .2s
+  transition: transform 0.2s;
 }
-.carousel img:hover{
+.carousel img:hover {
   transform: scale(1.2);
 }
-
-
-
-
-
-
-
-
-
-
-
 
 /* Animations*/
 
@@ -544,7 +561,7 @@
   .Nav-links {
     flex-direction: column;
   }
-  .Nav-bar {
+  .Nav-bar-logo {
     text-align: center;
     height: 100vh;
     justify-content: center;
@@ -555,7 +572,20 @@
     transform: translateX(-100%);
     display: block;
     width: 80%;
-    background-color: #04233ac5;
+    background-color: rgb(18, 20, 22, 0.773);
+  }
+  .Nav-bar-menu {
+    text-align: center;
+    height: 100vh;
+    justify-content: center;
+    justify-items: center;
+    position: fixed;
+    top: 0;
+    padding-top: 20%;
+    transform: translateX(-100%);
+    display: block;
+    width: 80%;
+    background-color: rgb(18, 20, 22, 0.97);
   }
   .open-menu-box {
     visibility: visible;

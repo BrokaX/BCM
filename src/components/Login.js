@@ -3,6 +3,7 @@ import React, {useState} from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import FirebaseService from "../services/firebase";
+import FooterMain from "./FooterMain";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -27,43 +28,44 @@ const Login = () => {
   };
   
   // Render
-  return(
-    <main >        
-      <section>
+  return(      
+    <main className="d-flex flex-column min-vh-100 Contact-us" >        
         <div>                                                                                               
-          <form>
-            <div>
-              <label htmlFor="email">Email Address</label>
+          <form className="Contact-us-form">
+            <div className="mb-3 d-flex flex-column">
+              <label  className="Contact-us-label" htmlFor="email">Email Address</label>
               <input
                 type="email"
                 id="email-address"
                 name="email"
                 onChange={(e) => setEmail(e.target.value)}
                 required                                  
-                placeholder="Email address"               
+                placeholder="Email address"   
+                className="Contact-us-input"             
               />
             </div>
-            <div>
-              <label htmlFor="password">Password</label>
+            <div className="mb-3 d-flex flex-column">
+              <label   className="Contact-us-label" htmlFor="password">Password</label>
               <input
                 type="password"
                 id="password"
                 name="password"
                 onChange={(e) => setPassword(e.target.value)} 
                 required                                 
-                placeholder="Password"              
+                placeholder="Password"    
+                className="Contact-us-input"           
               />
             </div>                 
-            <button type="submit" onClick={onLogin} >      
+            <button type="submit"  className="Contact-us-submit" onClick={onLogin} >      
               Login                                                                  
             </button>                              
           </form>
-          <p className="text-sm text-white text-center">
+          <h6 className="text-sm text-white text-center">
             No account yet? {"  "}
-            <NavLink to="/register">Register</NavLink>
-          </p>                           
+            <NavLink to="/register" className="text-decoration-none">Register</NavLink>
+          </h6>                           
         </div>
-      </section>
+      <FooterMain />
     </main>
   );
 };

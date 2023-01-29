@@ -3,6 +3,7 @@ import React, {useState} from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import FirebaseService from "../services/firebase";
+import FooterMain from "./FooterMain";
  
 const Register = () => {
   const navigate = useNavigate();
@@ -28,42 +29,45 @@ const Register = () => {
  
   // Render
   return (
-    <main>        
+    <main className="d-flex flex-column min-vh-100 Contact-us" >        
       <section>
         <div>                                                                                             
-          <form>                                                                                            
-            <div>
-              <label htmlFor="email">Email Address</label>
+          <form className="Contact-us-form">                                                                                            
+            <div className="mb-3 d-flex flex-column">
+              <label className="Contact-us-label" htmlFor="email">Email Address</label>
               <input
                 type="email"
                 label="Email Address"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required                                  
-                placeholder="Email address"               
+                placeholder="Email address"     
+                className="Contact-us-input"          
               />
             </div>
-            <div>
-              <label htmlFor="password">Password</label>
+            <div className="mb-3 d-flex flex-column">
+              <label className="Contact-us-label" htmlFor="password">Password</label>
               <input
                 type="password"
                 label="Create password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)} 
                 required                                 
-                placeholder="Password"              
+                placeholder="Password"   
+                className="Contact-us-input"           
               />
             </div>                                                  
-            <button type="submit" onClick={onSubmit} >  
+            <button type="submit"  className="Contact-us-submit" onClick={onSubmit} >  
               Register                                
             </button>                                                
           </form>
-          <p>
+          <h6 className="text-sm text-white text-center">
             Already have an account?{"  "}
-            <NavLink to="/login" >Login</NavLink>
-          </p>                   
+            <NavLink to="/login" className="text-decoration-none" >Login</NavLink>
+          </h6>                   
         </div>
       </section>
+      <FooterMain />
     </main>
   );
 };

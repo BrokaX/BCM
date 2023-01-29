@@ -1,40 +1,35 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import NavBar from './NavBar';
 import logo from "../assets/App-Logo.png";
 import BC1 from "../assets/BC1.png"
 import BC2 from "../assets/BC2.jpg"
 import BC3 from "../assets/BC3.png"
 import BC4 from "../assets/BC4.png"
+import FooterLandingPage from "./FooterLandingPage";
 
 export default function LandingPage() {
   return (
     <div>
       {/*** Page cover***/}
 
-      <div className="Landing-cover">
+      <div className="Landing-cover min-vh-100">
         <div className="Slogan-CTA">
           <h1 className="Title-slogan">BUSINESS CARD MAKER</h1>
           <h5 className="Slogan-slogan">
-            We take your Business to the next level
+          Take your Business to the next level
           </h5>
           <p className="Slogan-paragraph">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad
-            temporibus, molestias beatae natus similique asperiores sapiente ea
-            atque quae blanditiis amet accusamus, tenetur officiis voluptas
-            itaque optio eum, quam suscipit ab ut facere cum unde explicabo! Aut
-            nisi, fuga incidunt, voluptatem deleniti perspiciatis mollitia
-            aliquam, explicabo magni voluptas corrupti explicabo vel!
+          Every business owner needs a business card. And BCM makes the creative process super fast and easy with our free online Business Card Maker. Now you can create beautiful, professional, printable business card templates for free. Simply fill in the information of your business and download your ready to print personalized business cards.
           </p>
           <button className="Slogan-button">Get Started</button>
           <Link to=""></Link>
         </div>
       </div>
-      <NavBar/>
+      
       {/*** Our Products***/}
 
       <div className="Our-products">
-        <h1 className="Title-products">WELCOME TO BCM</h1>
+        <h1 className="Title-products">CHOOSE DIFFERENT STYLES</h1>
         <div class="cards">
           {/** CARD **/}
           <div>
@@ -179,17 +174,7 @@ export default function LandingPage() {
       </div>
 
       {/* Footer */}
-      <footer className="footer">
-        <div className="footer-container">
-          <div>Hello</div>
-          <div>Hello</div>
-          <div>Hello</div>
-          <div>Hello</div>
-        </div>
-        <div className="social-media-icons">
-
-        </div>
-      </footer>
+      <FooterLandingPage />
     </div>
   );
 }

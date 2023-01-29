@@ -1,9 +1,11 @@
 import React from "react";
+import FooterMain from "./FooterMain";
 
 function Profile() {
   return (
-    <div>
+    <div className="d-flex flex-column min-vh-100">
       Profile
+      <FooterMain />
     </div>
   );
 };
