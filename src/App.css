@@ -96,11 +96,13 @@ html {
   transition: 1s ease-in-out;
   width: 100%;
   z-index: 2;
-  background-color: var(--bg1-color);
+  background-color: rgb(26, 24, 24);
   overflow: hidden;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  align-items: center;
+  justify-content: center;
   font-family: "Josefin Sans";
   font-weight: 100;
   word-spacing: 10px;
@@ -324,7 +326,7 @@ html {
   color: white;
   padding: 1% 2% 1% 2%;
   border-radius: 15px;
-  background-color: var(--bg1-color) 7c;
+  background-color: rgba(36, 36, 11, 0.479);
 }
 .Contact-us-input:focus {
   background-color: #ffffff25;
@@ -639,7 +641,7 @@ html {
     transform: translateX(-100%);
     display: block;
     width: 80%;
-    background-color: rgb(18, 20, 22, 0.97);
+    background-color: rgba(18, 20, 22, 0.863);
   }
   .open-menu-box {
     visibility: visible;
