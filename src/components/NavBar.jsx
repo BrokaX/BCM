@@ -57,10 +57,10 @@ function NavBar() {
           <img className="App-logo" src={logo} alt="logo" />
         </Link>
         {isLoggedIn ? (
-        <div className="Login-buttons">
-          <button className="User-button" onClick={handleLogout} >
-            <Link to="/login" className="App-Link User-button">
-              <h5 className="text-dark">Logout</h5>
+        <div>
+          <button className="me-4 pt-2 User-button" onClick={handleLogout} >
+            <Link to="/" className="App-Link">
+              <h5 className="text-dark fs-5 fw-bold">Logout</h5>
             </Link>
           </button>
         </div>
