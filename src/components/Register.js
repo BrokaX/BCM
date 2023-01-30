@@ -29,10 +29,11 @@ const Register = () => {
  
   // Render
   return (
-    <main className="popup-window flex-column min-vh-100 Contact-us" >        
+    <main className="popup-window flex-column min-vh-100 Contact-us" >  
       <section>
         <div>                                                                                             
           <form className="Contact-us-form login-register">                                                                                            
+    <h4 className="text-sm text-white text-center">Sign-up</h4>      
             <div className="mb-3 d-flex flex-column">
               <label className="Contact-us-label" htmlFor="email">Email Address</label>
               <input

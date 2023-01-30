@@ -786,10 +786,10 @@ color: var(--surface-color);
   width: 35rem;
 }
 .login-register{
-  padding-top: 15%;
+  padding-top: 10%;
 }
 .popup-content{
-  width: 50%;
+  width: 100%;
 }
 #popup-root{
   position: absolute;

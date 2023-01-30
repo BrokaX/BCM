@@ -29,9 +29,11 @@ const Login = () => {
   
   // Render
   return(      
-    <main className="flex-column min-vh-100 Contact-us" >        
-        <div>                                                                                               
+    <main className="popup-window flex-column min-vh-100 Contact-us" >        
+        <div>    
+                                                                                                     
           <form className="Contact-us-form login-register">
+    <h4 className="text-sm text-white text-center">Login</h4>      
             <div className="mb-3 d-flex flex-column">
               <label  className="Contact-us-label" htmlFor="email">Email Address</label>
               <input
