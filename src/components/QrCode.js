@@ -1,19 +1,30 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import QRCode from "react-qr-code";
 
-function QrCode(props) {
+function QrCode() {
+  const [text, setText] = useState("");
+  const canvasRef = useRef();
+
+  useEffect(() => {
+    QRCode.toCanvas(
+      canvasRef.current,
+      // QR code doesn't work with an empty string
+      // so we are using a blank space as a fallback
+      text || " ",
+      (error) => error && console.error(error)
+    );
+  }, [text]);
+
   return (
-    <div
-      style={{ height: "auto", margin: "0 auto", maxWidth: 150, width: "100%" }}
-    >
-      <QRCode
-        size={356}
-        style={{ height: "auto", maxWidth: "100%", width: "100%" }}
-        value={props.link}
-        viewBox={`0 0 356 356`}
+    <div>
+      <input
+        value={text}
+        onChange={(e) => setText(e.target.value)}
       />
+      <br />
+      <canvas ref={canvasRef} />
     </div>
   );
-}
+};
 
 export default QrCode;

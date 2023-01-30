@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from "react";
-import QrCode from "../QrCode.js";
-
+import QrCode from "../QrCode";
 function Result() {
   const [data, setData] = useState(null);
-
   useEffect(() => {
     async function fetchData() {
       try {
         const response = await fetch(
-          "https://react-crud-ed285-default-rtdb.europe-west1.firebasedatabase.app"
+          "https://react-crud-1bcbc-default-rtdb.firebaseio.com/react-crud.json"
         );
         const json = await response.json();
         const array = Object.keys(json).map((key) => ({
@@ -16,19 +14,19 @@ function Result() {
           ...json[key],
         }));
         setData(array);
-      } catch (err) {
-        console.error(err);
+      } catch (error) {
+        console.error(error);
       }
     }
     fetchData();
   }, []);
-
   if (!data) {
     return <div>Sorry No Data added yet</div>;
   }
   console.log(data);
+  // Delete
 
-  // Actions
+  // actions
   const handleCall = (number) => {
     const phoneNumber = `tel:${number}`;
     window.open(phoneNumber);
@@ -50,7 +48,6 @@ function Result() {
   };
 
   let arrays = data.length;
-
   return (
     <div className="head">
       <div key={data[arrays - 1].id} id="main">

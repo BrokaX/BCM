@@ -1,49 +1,44 @@
 import React, { useState } from "react";
-
-function Update() {
-
-  const initialUser = {
-    name: "",
-    email: "",
-    phone: null,
-    slogan: "",
-    website: "",
-    youtube: "",
-    facebook: "",
-    instagram: "",
-    twitter: "",
-    whatsapp: null,
-  };
-
+function App() {
   const [identifier, setId] = useState("");
   const [show, setShow] = useState(false);
-  const [user, setUser] = useState(initialUser);
-
-  const getUserData = (e) => {
-    let name = e.target.name;
-    let value = e.target.value;
+  const [user, setUser] = useState({
+    name: "",
+    slogan: "",
+    email: "",
+    phone: "",
+    youtube: "",
+    facebook: "",
+    twitter: "",
+    instagram: "",
+    website: "",
+    whatsapp: "",
+  });
+  let name, value;
+  const getUserData = (event) => {
+    name = event.target.name;
+    value = event.target.value;
     setUser({ ...user, [name]: value });
   };
 
   async function deleteData(id) {
     try {
       await fetch(
-        `https://react-crud-ed285-default-rtdb.europe-west1.firebasedatabase.app`,
+        `https://react-crud-1bcbc-default-rtdb.firebaseio.com/react-crud/${id}.json`,
         {
           method: "DELETE",
         }
       );
-    } catch (err) {
-      console.error(err);
+    } catch (error) {
+      console.error(error);
     }
   }
-
   // Update
   async function updateData(id, updatedData) {
     deleteData(id);
     try {
       await fetch(
-        `https://react-crud-ed285-default-rtdb.europe-west1.firebasedatabase.app`,
+        `https://react-crud-1bcbc-default-rtdb.firebaseio.com/react-crud/${id}.json`,
         {
           method: "PUT",
           body: JSON.stringify(updatedData),
@@ -51,18 +46,16 @@ function Update() {
       );
       setShow(true);
       // or you can use setData() method to update the state
-    } catch (err) {
-      console.error(err);
+    } catch (error) {
+      console.error(error);
     }
-  };
-
+  }
   const handle = (e) => {
     setId(e.target.value);
   };
 
-  // Render
   return (
-    <div>
+    <>
       <div className="container">
         <div className="col-md-6">
           <label htmlFor="title" className="form-label">
@@ -239,8 +232,8 @@ function Update() {
           </button>
         </form>
       </div>
-    </div>
+    </>
   );
 }
 
-export default Update;
+export default App;

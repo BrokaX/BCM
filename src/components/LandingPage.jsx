@@ -21,8 +21,9 @@ export default function LandingPage() {
           <p className="Slogan-paragraph">
           Every business owner needs a business card. And BCM makes the creative process super fast and easy with our free online Business Card Maker. Now you can create beautiful, professional, printable business card templates for free. Simply fill in the information of your business and download your ready to print personalized business cards.
           </p>
-          <button className="Slogan-button">Get Started</button>
-          <Link to=""></Link>
+          <Link to="/form" className="">
+            <button className="Slogan-button p-3">Get Started</button>
+          </Link>
         </div>
       </div>
       
@@ -30,28 +31,28 @@ export default function LandingPage() {
 
       <div className="Our-products">
         <h1 className="Title-products">CHOOSE DIFFERENT STYLES</h1>
-        <div class="cards">
+        <div className="cards">
           {/** CARD **/}
           <div>
-            <a href="http://localhost:3000" class="card">
+            <a href="http://localhost:3000" className="card">
               <img
                 src={BC1}
-                class="card__image"
+                className="card__image"
                 alt="Business card"
               />
-              <div class="card__overlay">
-                <div class="card__header">
+              <div className="card__overlay">
+                <div className="card__header">
                   <img
-                    class="card__thumb"
+                    className="card__thumb"
                     src={logo}
                     alt="Logo"
                   />
-                  <div class="card__header-text">
-                    <h3 class="card__title">Simple Design</h3>
-                    <span class="card__status">Dark & Gold</span>
+                  <div className="card__header-text">
+                    <h3 className="card__title">Simple Design</h3>
+                    <span className="card__status">Dark & Gold</span>
                   </div>
                 </div>
-                <p class="card__description">
+                <p className="card__description">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 </p>
               </div>
@@ -60,26 +61,26 @@ export default function LandingPage() {
           {/** End of CARD **/}
           {/** CARD **/}
           <div>
-            <a href="http://localhost:3000" class="card">
-            <i class="fa-regular fa-bring-front"></i>
+            <a href="http://localhost:3000" className="card">
+            <i className="fa-regular fa-bring-front"></i>
               <img
                 src= {BC2}
-                class="card__image"
+                className="card__image"
                 alt="Business card"
               />
-              <div class="card__overlay">
-                <div class="card__header">
+              <div className="card__overlay">
+                <div className="card__header">
                   <img
-                    class="card__thumb"
+                    className="card__thumb"
                     src={logo}
                     alt="Logo"
                   />
-                  <div class="card__header-text">
-                    <h3 class="card__title">Simple Design</h3>
-                    <span class="card__status">Dark & Gold</span>
+                  <div className="card__header-text">
+                    <h3 className="card__title">Simple Design</h3>
+                    <span className="card__status">Dark & Gold</span>
                   </div>
                 </div>
-                <p class="card__description">
+                <p className="card__description">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 </p>
               </div>
@@ -88,25 +89,25 @@ export default function LandingPage() {
           {/** End of CARD **/}
           {/** CARD **/}
           <div>
-            <a href="http://localhost:3000" class="card">
+            <a href="http://localhost:3000" className="card">
               <img
                 src={BC3}
-                class="card__image"
+                className="card__image"
                 alt="Business card"
               />
-              <div class="card__overlay">
-                <div class="card__header">
+              <div className="card__overlay">
+                <div className="card__header">
                   <img
-                    class="card__thumb"
+                    className="card__thumb"
                     src={logo}
                     alt="Logo"
                   />
-                  <div class="card__header-text">
-                    <h3 class="card__title">Simple Design</h3>
-                    <span class="card__status">Dark & Gold</span>
+                  <div className="card__header-text">
+                    <h3 className="card__title">Simple Design</h3>
+                    <span className="card__status">Dark & Gold</span>
                   </div>
                 </div>
-                <p class="card__description">
+                <p className="card__description">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 </p>
               </div>
@@ -115,25 +116,25 @@ export default function LandingPage() {
           {/** End of CARD **/}
           {/** CARD **/}
           <div>
-            <a href="http://localhost:3000" class="card">
+            <a href="http://localhost:3000" className="card">
               <img
                 src={BC4}
-                class="card__image"
+                className="card__image"
                 alt="Business card"
               />
-              <div class="card__overlay">
-                <div class="card__header">
+              <div className="card__overlay">
+                <div className="card__header">
                   <img
-                    class="card__thumb"
+                    className="card__thumb"
                     src={logo}
                     alt="Logo"
                   />
-                  <div class="card__header-text">
-                    <h3 class="card__title">Simple Design</h3>
-                    <span class="card__status">Dark & Gold</span>
+                  <div className="card__header-text">
+                    <h3 className="card__title">Simple Design</h3>
+                    <span className="card__status">Dark & Gold</span>
                   </div>
                 </div>
-                <p class="card__description">
+                <p className="card__description">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 </p>
               </div>

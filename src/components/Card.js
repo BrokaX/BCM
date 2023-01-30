@@ -1,20 +1,22 @@
 import React, { useState } from "react";
-import CardsService from "../services/cards.js";
+import { deleteDoc, doc, updateDoc } from "firebase/firestore";
+// Services
+import FirebaseService from "../services/firebase";
 
 const Card = (props) => {
-
   const initialCardState = {
     key: null,
+    title: "",
     name: "",
     email: "",
     phone: null,
-    slogan: "",
     website: "",
     youtube: "",
     facebook: "",
-    instagram: "",
     twitter: "",
+    instagram: "",
     whatsapp: null,
+    imageURL: ""
   };
 
   const [currentCard, setCurrentCard] = useState(initialCardState);
@@ -31,39 +33,40 @@ const Card = (props) => {
     setCurrentCard({ ...currentCard, [name]: value });
   };
 
-  const updateCard = () => {
-    const data = {
-      name: currentCard.name,
-      email: currentCard.email,
-      phone: currentCard.phone,
-      slogan: currentCard.slogan,
-      website: currentCard.website,
-      youtube: currentCard.youtube,
-      facebook: currentCard.facebook,
-      instagram: currentCard.instagram,
-      twitter: currentCard.twitter,
-      whatsapp: currentCard.whatsapp,
+  // Update (CRUD)
+  const updateCard = async (e) => {
+    e.preventDefault()
+    try {
+      await updateDoc(doc(FirebaseService.db, "cards", currentCard.id), {
+        title: currentCard.title,
+        name: currentCard.name,
+        email: currentCard.email,
+        phone: currentCard.phone,
+        website: currentCard.website,
+        youtube: currentCard.youtube,
+        facebook: currentCard.facebook,
+        twitter: currentCard.twitter,
+        instagram: currentCard.instagram,
+        whatsapp: currentCard.whatsapp,
+        imageURL: currentCard.imageURL
+      })
+      setMessage("Updated successfully!");
+    } catch (err) {
+      console.log(err);
     };
-
-    CardsService.update(currentCard.id, data)
-      .then(() => {
-        setMessage("Updated successfully!");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
   };
 
-  const deleteCard = () => {
-    CardsService.remove(currentCard.id)
-      .then(() => {
-        props.refreshList();
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+  // Delete (CRUD)
+  const deleteCard = async () => {
+    try {
+      await deleteDoc(doc(FirebaseService.db, "cards", currentCard.id));
+      props.refreshList();
+    } catch (err) {
+      console.log(err);
+    };
   };
 
+  // Render
   return (
     <div>
       {currentCard && (
@@ -79,18 +82,6 @@ const Card = (props) => {
                 name="name"
                 value={currentCard.title}
                 onChange={handleInputChange}
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="email">Email</label>
-              <input
-                type="email"
-                className="form-control"
-                id="email"
-                required
-                value={currentCard.email}
-                onChange={handleInputChange}
-                name="email"
               />
             </div>
           </form>

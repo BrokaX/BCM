@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from "react";
-import QrCode from "../QrCode.js";
-
-function Read() {
+import QrCode from "../QrCode";
+function App() {
   const [data, setData] = useState(null);
   const [show, setShow] = useState(false);
-
   useEffect(() => {
     async function fetchData() {
       try {
         const response = await fetch(
-          "https://react-crud-ed285-default-rtdb.europe-west1.firebasedatabase.app"
+          "https://react-crud-1bcbc-default-rtdb.firebaseio.com/react-crud.json"
         );
         const json = await response.json();
         const array = Object.keys(json).map((key) => ({
@@ -17,23 +15,21 @@ function Read() {
           ...json[key],
         }));
         setData(array);
-      } catch (err) {
-        console.error(err);
+      } catch (error) {
+        console.error(error);
       }
     }
     fetchData();
   }, []);
-
   if (!data) {
     return <div>Sorry No Data added yet</div>;
   }
   console.log(data);
-
   // Delete
   async function deleteData(id) {
     try {
       let del = await fetch(
-        "https://react-crud-ed285-default-rtdb.europe-west1.firebasedatabase.app",
+        `https://react-crud-1bcbc-default-rtdb.firebaseio.com/react-crud/${id}.json`,
         {
           method: "DELETE",
         }
@@ -41,12 +37,11 @@ function Read() {
       if (del) {
         setShow(true);
       }
-    } catch (err) {
-      console.error(err);
+    } catch (error) {
+      console.error(error);
     }
   }
-
-  // Actions
+  // actions
   const handleCall = (number) => {
     const phoneNumber = `tel:${number}`;
     window.open(phoneNumber);
@@ -66,8 +61,6 @@ function Read() {
   const handleLink = (link) => {
     window.open(link, "_blank");
   };
-
-  // Render
   return (
     <div className="head">
       {show && (
@@ -127,7 +120,7 @@ function Read() {
                       <button
                         disabled={element.instagram === ""}
                         onClick={() => handleLink(element.instagram)}
-                        className="btn btn-secondary insta"
+                        className="btn btn-secondary  insta"
                       >
                         <img src="insta.png" alt="" />
                       </button>
@@ -187,4 +180,4 @@ function Read() {
   );
 }
 
-export default Read;
+export default App;

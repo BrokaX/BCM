@@ -1,38 +1,45 @@
 import React, { useEffect, useState } from "react";
-import CardsService from "../services/cards.js";
+import {
+  collection,
+  doc,
+  onSnapshot,
+  orderBy,
+  query,
+} from "firebase/firestore";
+// Components
 import Card from "./Card.js";
 import FooterMain from "./FooterMain.js";
+// Services
+import FirebaseService from "../services/firebase.js";
 
 const Library = () => {
   const [cards, setCards] = useState([]);
   const [currentCard, setCurrentCard] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(-1);
 
-  const onDataChange = (items) => {
-    let cards = [];
-    items.docs.forEach((item) => {
-      let id = item.id;
-      let data = item.data();
-      cards.push({
-        id: id,
-        name: data.name,
-        email: data.email,
-        phone: data.phone,
-        slogan: data.slogan,
-        website: data.website,
-        youtube: data.youtube,
-        facebook: data.facebook,
-        instagram: data.instagram,
-        twitter: data.twitter,
-        whatsapp: data.whatsapp,
-      });
-    });
-    setCards(cards);
-  };
-
   useEffect(() => {
-    const unsubscribe = CardsService.getAll().onSnapshot(onDataChange);
-    return () => unsubscribe();
+    const q = query(
+      collection(FirebaseService.db, "cards"),
+      orderBy("created", "desc")
+    );
+    onSnapshot(q, (querySnapshot) => {
+      setCards(
+        querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          title: doc.title,
+          name: doc.name,
+          email: doc.email,
+          phone: doc.phone,
+          website: doc.website,
+          youtube: doc.youtube,
+          facebook: doc.facebook,
+          twitter: doc.twitter,
+          instagram: doc.instagram,
+          whatsapp: doc.whatsapp,
+          imageURL: doc.imageURL,
+        }))
+      );
+    });
   }, []);
 
   const refreshList = () => {
@@ -42,48 +49,51 @@ const Library = () => {
 
   const setActiveCard = (card, index) => {
     const {
+      title,
       name,
       email,
       phone,
-      slogan,
       website,
       youtube,
       facebook,
-      instagram,
       twitter,
-      whatsapp
+      instagram,
+      whatsapp,
+      imageURL,
     } = card;
 
     setCurrentCard({
       id: card.id,
+      title,
       name,
       email,
       phone,
-      slogan,
       website,
       youtube,
       facebook,
-      instagram,
       twitter,
+      instagram,
       whatsapp,
+      imageURL,
     });
     setCurrentIndex(index);
   };
 
+  // Render
   return (
-    <div className="list row d-flex flex-column min-vh-100" >
+    <div className="list row d-flex flex-column min-vh-100 text-light">
       <div className="col-md-6">
         <ul className="list-group">
           { cards &&
-            cards.docs.map((card, index) => (
+            cards.map((card, index) =>
               <li
                 className={"list-group-item " + (index === currentIndex ? "active" : "")}
                 onClick={() => setActiveCard(card, index)}
                 key={card.id}
               >
-                { card.name }
+                { card.title }
               </li>
-            ))}
+            )}
         </ul>
       </div>
       <div className="col-md-6">

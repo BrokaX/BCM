@@ -1,10 +1,10 @@
 import * as Yup from "yup";
 
 const validationSchema = Yup.object().shape({
+  title: Yup.string(),
   name: Yup.string(),
   email: Yup.string().email(),
   phone: Yup.number().integer().positive(),
-  slogan: Yup.string(),
   website: Yup.string().url(),
   youtube: Yup.string().url(),
   facebook: Yup.string().url(),

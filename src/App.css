@@ -13,7 +13,6 @@
   padding: 0;
   box-sizing: border-box;
 }
-
 /************************* Body ************************/
 body,
 html {
@@ -43,20 +42,16 @@ html {
 }
 .User-button{
   background:  var(--surface-color) ;
-  width: 8rem;
-  height: 3rem;
-  padding: 3%;
-  margin-left: 2%;
-}
-.User-button:hover, .User-button:hover ~  h5{
-  background-color: none;
   color: white;
-  border: solid 1px white;
+  width: 8rem;
+  padding: 3%;
+  margin-left: 7%;
+  border: none;
+  border-radius: 8px;
 }
 .Nav-text:hover {
   text-decoration: none;
 }
-
 .Nav-text {
   font-size: 1rem;
   color: var(--surface-color);
@@ -89,7 +84,7 @@ html {
   transition: 1s ease-in-out;
   width: 100%;
   z-index: 2;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: var(--bg1-color);
   overflow: hidden;
   display: flex;
   justify-content: space-between;
@@ -97,12 +92,14 @@ html {
   font-family: "Josefin Sans";
   font-weight: 100;
   word-spacing: 10px;
+  box-shadow: 0px 0px 36px #ffffff25;
+  position: fixed;
 }
 .Nav-bar-menu {
   transition: 1s ease-in-out;
   width: 100%;
   z-index: 2;
-  background-color: var(--bg1-color);
+  background-color: rgb(26, 24, 24);
   overflow: hidden;
   display: flex;
   justify-content: space-between;
@@ -112,6 +109,7 @@ html {
   font-family: "Josefin Sans";
   font-weight: 100;
   word-spacing: 10px;
+  transform: translateY(72px);
 }
 .Nav-links {
   display: flex;
@@ -121,13 +119,6 @@ html {
   top: 0;
 }
 
-.logo-banner{
-  width: 20rem;
-  visibility: hidden;
-}
-.logo-banner-footer{
-  width: 20rem;
-}
 /************************* Landing Page ************************/
 
 .Landing-cover {
@@ -339,9 +330,21 @@ html {
   color: white;
   padding: 1% 2% 1% 2%;
   border-radius: 15px;
-  background-color: rgba(36, 36, 11, 0.479);
+  background-color: rgb(18, 20, 22, 0.2);
 }
 .Contact-us-input:focus {
+  background-color: #ffffff25;
+  color: var(--bg1-color);
+  outline: none;
+}
+.Contact-us-input-btn {
+  border: solid 1px var(--surface-color);
+  color: white;
+  padding: 2% 4% 2% 4%;
+  border-radius: 15px;
+  background-color: rgb(18, 20, 22, 0.2);
+}
+.Contact-us-input-btn:focus {
   background-color: #ffffff25;
   color: var(--bg1-color);
   outline: none;
@@ -371,46 +374,27 @@ html {
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
 }
-/* ************************ About us page *************** */
+.Contact-us-submit-btn {
+  margin: 2% 0;
+  font-size: 18px;
+  font-weight: 500;
+  padding: 1.5% 2%;
+  color: var(--bg1-color);
+  border: 1px solid var(--surface-color);
+  border-radius: 15px;
+  background-color: var(--surface-color);
+}
 
-.container-about-us {
-  overflow: hidden;
-  background-attachment: fixed;
-  background-color: #e4a11b;
+.Contact-us-submit-btn:hover,
+.Contact-us-submit-btn:focus,
+.Contact-us-submit-btn:active {
+  outline: none;
+  color: white;
+  background: var(--bg1-color) 7c;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
-.about-us-text{
-  font-size: 20px;
-  color: #04233a;
-  text-align: center;
-  display: inline-block;
-  height: 34vh;
-  width: 100%;
-  padding: 5% 25% ;
-  margin: 0 auto;
-  background-color: #e4a11b;
-}
-.sliding-background {
-  background: url("./assets/scrolling-slide.png") repeat-x;
-  height: 560px;
-  width: 5076px;
-  animation: slide 60s linear infinite;
-  margin-bottom: 10%;
-}
-.about-us-map{
-  width: 100%;
-  height: 30rem;
-  margin: 0 auto;
-  filter: invert(90%);
-  margin-bottom: 10%;
-}
-@keyframes slide{
-  0% {
-    transform: translate3d(0, 0, 0);
-  }
-  100% {
-    transform: translate3d(-1692px, 0, 0);
-  }
-}
+
 /************************* Footer ************************/
 .footer {
   height: 50vh;
@@ -433,21 +417,7 @@ html {
 .footer-bg {
   background-color: rgba(0, 0, 0, 0.2);
 }
-.text-center a{
-  margin-left: 4px;
-}
-.text-center a:hover{
-color: var(--surface-color);
-}
 /*************** Business Card Page 'Form.js' *******************/
-.Form-cover{
-  display: flex;
-  flex-wrap: wrap;
-  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.6)), url('./assets/cover-bg-2.jpg');
-  background-position: bottom;
-  background-size: cover;
-  background-attachment: fixed;
-}
 .Business-card-container {
   margin: 0;
   padding: 5%;
@@ -456,10 +426,7 @@ color: var(--surface-color);
   margin: 0 2rem;
   padding: 2%;
 }
-.form-title{
-  color: white;
-  font-size: 30px;
-}
+
 .Business-card-preview {
   margin: 0 2rem;
   padding: 2%;
@@ -470,16 +437,21 @@ color: var(--surface-color);
 .Business-card-preview-container {
   /* This is the parent for user details*/
   position: relative;
-  width: 60%;
+  width: 80%;
   margin: 0 auto;
 }
 .main-card {
   margin-bottom: 2rem;
-  border-radius: 35px;
+  border-radius: 25px;
   width: 100%;
 }
-
+.main-card-library {
+  margin: 2rem;
+  border-radius: 25px;
+  width: 50%;
+}
 .Card-preview-info {
+  /*border: solid red;*/
   padding: 5%;
   position: absolute;
   width: 100%;
@@ -490,77 +462,74 @@ color: var(--surface-color);
 }
 /***********************User Details Preview***********/
 .username {
+  position: absolute;
+  text-transform: capitalize;
+  font-family: "Josefin Sans";
+  font-size: calc(14px + 0.1rem);
+  top: 26%;
+  left: 13%;
+}
+.business-title {
   font-family: "Josefin Sans";
   position: absolute;
   font-size: calc(18px + 0.1rem);
   font-weight: bold;
   text-transform: uppercase;
-  left: 11%;
-  top: 15%;
-}
-.business-title {
-  position: absolute;
-  text-transform: capitalize;
-  font-family: "Josefin Sans";
-  font-size: calc(15px + 0.1rem);
-  top: 28%;
-  left: 11%;
+  left: 13%;
+  top: 11%;
 }
 .user-email {
   position: absolute;
   font-size: calc(10px + 0.1rem);
   text-transform: lowercase;
-  top: 46%;
+  top: 41%;
   left: 16%;
 }
-
 .user-phone {
   position: absolute;
   font-size: calc(10px + 0.1rem);
-  top: 53%;
+  top: 50%;
   left: 16%;
 }
 .user-youtube {
   position: absolute;
   font-size: calc(10px + 0.1rem);
   text-transform: lowercase;
-  top: 63%;
+  top: 58%;
   left: 16%;
 }
-
 .user-facebook {
   position: absolute;
   font-size: calc(10px + 0.1rem);
   text-transform: lowercase;
-  top: 70%;
+  top: 66%;
   left: 16%;
 }
-
 .user-twitter {
   position: absolute;
   font-size: calc(10px + 0.1rem);
-  top: 80%;
+  top: 74%;
   left: 16%;
 }
 .user-instagram {
   position: absolute;
   font-size: calc(10px + 0.1rem);
   text-transform: lowercase;
-  top: 87%;
+  top: 82%;
   left: 16%;
 }
 .user-website {
   position: absolute;
   font-size: calc(10px + 0.1rem);
   text-transform: lowercase;
-  top: 97%;
+  top: 92%;
   left: 6%;
 }
 .user-whatsapp {
   position: absolute;
   font-size: calc(10px + 0.1rem);
   left: 50%;
-  top: 97%;
+  top: 92%;
 }
 
 .User-profile-pic {
@@ -568,7 +537,7 @@ color: var(--surface-color);
   top: 1rem;
   right: 1rem;
   width: 15%;
-  height: calc(70px + 5%);
+  height: calc(45px + 5%);
   object-fit: cover;
   border-radius: 50%;
 }
@@ -580,8 +549,7 @@ color: var(--surface-color);
 }
 .carousel-images {
   display: flex;
-  flex-direction: row;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
   width: 80%;
 }
@@ -688,21 +656,14 @@ color: var(--surface-color);
   }
   .Nav-bar-logo {
     text-align: center;
-    height: 100vh;
-    justify-content: center;
-    justify-items: center;
+    height: 18%;
+    justify-content: space-between;
+    justify-items: top;
     position: fixed;
     top: 0;
-    padding-top: 20%;
-    transform: translateX(-100%);
-    display: block;
-    width: 80%;
+    width: 100%;
     background-color: rgb(18, 20, 22, 0.773);
   }
-  .logo-banner{
-    visibility: visible;
-  }
-  
   .Nav-bar-menu {
     text-align: center;
     height: 100vh;
@@ -714,9 +675,46 @@ color: var(--surface-color);
     transform: translateX(-100%);
     display: block;
     width: 80%;
-    background-color: rgba(18, 20, 22, 0.863);
+    background-color: rgba(18, 20, 22, 0.97);
   }
   .open-menu-box {
     visibility: visible;
   }
+}
+
+
+/* Extra */
+.container h2 {
+  text-align: center;
+  margin: 25px auto;
+}
+.list {
+  text-align: left;
+  max-width: 750px;
+  margin: auto;
+}
+.submit-form {
+  max-width: 300px;
+  margin: auto;
+}
+.edit-form {
+  max-width: 300px;
+  margin: auto;
+}
+.card-btn {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  text-decoration: none;
+  border: var(--surface-color) solid 1px;
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url("./assets/cover-bg-2.jpg");
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  height: 35rem;
+  width: 35rem;
 }

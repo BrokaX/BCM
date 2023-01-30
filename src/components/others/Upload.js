@@ -1,38 +1,31 @@
 import React, { useState } from "react";
-import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
-// Services
-import databaseService from "../services/firebase-config";
-
+import { storage } from "../firebase-config";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 function Upload(props) {
-
   const [image, setImage] = useState(null);
   const [url, setUrl] = useState("");
-
   const handleImage = (e) => {
     if (e.target.files[0]) {
       setImage(e.target.files[0]);
     }
   };
-
   const handleSubmit = () => {
-    const imageRef = ref(databaseService.storage, "image");
+    const imageRef = ref(storage, "image");
     uploadBytes(imageRef, image)
       .then(() => {
         getDownloadURL(imageRef)
           .then((url) => {
             setUrl(url);
           })
-          .catch((err) => {
-            console.log(err);
+          .catch((eror) => {
+            console.log(eror);
           });
         setImage(null);
       })
-      .catch((err) => {
-        console.log(err);
+      .catch((eror) => {
+        console.log(eror);
       });
   };
-
-  // Render
   return (
     <div className="card" id="carder">
       <div className="mb-3">
@@ -66,5 +59,4 @@ function Upload(props) {
     </div>
   );
 }
-
 export default Upload;

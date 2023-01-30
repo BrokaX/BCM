@@ -1,57 +1,57 @@
 import React from "react";
-import logoBanner from "../assets/logo-banner.png"
+
 function FooterMain() {
   return (
-    <footer class="mt-auto bg-dark text-center text-white">
-      <div class="container p-4 pb-0">
+    <footer className="mt-auto bg-dark text-center text-white">
+      <div className="container p-4 pb-0">
         {/*Social media*/}
-        <section class="mb-4">
+        <section className="mb-4">
           <a
-            class="btn btn-outline-light btn-floating m-1"
+            className="btn btn-outline-light btn-floating m-1"
             href="#!"
             role="button"
           >
-            <i class="fab fa-facebook-f"></i>
+            <i className="fab fa-facebook-f"></i>
           </a>
 
           <a
-            class="btn btn-outline-light btn-floating m-1"
+            className="btn btn-outline-light btn-floating m-1"
             href="#!"
             role="button"
           >
-            <i class="fab fa-twitter"></i>
+            <i className="fab fa-twitter"></i>
           </a>
 
           <a
-            class="btn btn-outline-light btn-floating m-1"
+            className="btn btn-outline-light btn-floating m-1"
             href="#!"
             role="button"
           >
-            <i class="fab fa-google"></i>
+            <i className="fab fa-google"></i>
           </a>
 
           <a
-            class="btn btn-outline-light btn-floating m-1"
+            className="btn btn-outline-light btn-floating m-1"
             href="#!"
             role="button"
           >
-            <i class="fab fa-instagram"></i>
+            <i className="fab fa-instagram"></i>
           </a>
 
           <a
-            class="btn btn-outline-light btn-floating m-1"
+            className="btn btn-outline-light btn-floating m-1"
             href="#!"
             role="button"
           >
-            <i class="fab fa-linkedin-in"></i>
+            <i className="fab fa-linkedin-in"></i>
           </a>
 
           <a
-            class="btn btn-outline-light btn-floating m-1"
+            className="btn btn-outline-light btn-floating m-1"
             href="#!"
             role="button"
           >
-            <i class="fab fa-github"></i>
+            <i className="fab fa-github"></i>
           </a>
         </section>
       </div>
@@ -59,14 +59,8 @@ function FooterMain() {
       {/* Copyright*/}
 
       <div className="text-center p-3 footer-bg">
-        © {new Date().getFullYear()} Copyright:  
-        <a className="text-white" href="https://github.com/BrokaX/">
-          Abbes
-        </a> & <a className="text-white" href="https://github.com/zopapami/">
-          Zoi
-        </a> 
+        Copyright © Business Card Maker, 2023 
       </div>
-      <div><img className="logo-banner-footer" src={logoBanner} alt="logo banner" /></div>
     </footer>
   );
 }

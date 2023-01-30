@@ -1,5 +1,4 @@
 import React from "react";
-import logoBanner from "../assets/logo-banner.png"
 
 function FooterLandingPage() {
   return (
@@ -92,130 +91,12 @@ function FooterLandingPage() {
             sequi voluptate quas.
           </p>
         </section>
-
-        <section className="">
-          <div className="row">
-            <div className="col-lg-3 col-md-6 mb-4 mb-md-0">
-              <h5 className="text-uppercase">Links</h5>
-
-              <ul className="list-unstyled mb-0">
-                <li>
-                  <a href="#!" className="text-white">
-                    Link 1
-                  </a>
-                </li>
-                <li>
-                  <a href="#!" className="text-white">
-                    Link 2
-                  </a>
-                </li>
-                <li>
-                  <a href="#!" className="text-white">
-                    Link 3
-                  </a>
-                </li>
-                <li>
-                  <a href="#!" className="text-white">
-                    Link 4
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            <div className="col-lg-3 col-md-6 mb-4 mb-md-0">
-              <h5 className="text-uppercase">Links</h5>
-
-              <ul className="list-unstyled mb-0">
-                <li>
-                  <a href="#!" className="text-white">
-                    Link 1
-                  </a>
-                </li>
-                <li>
-                  <a href="#!" className="text-white">
-                    Link 2
-                  </a>
-                </li>
-                <li>
-                  <a href="#!" className="text-white">
-                    Link 3
-                  </a>
-                </li>
-                <li>
-                  <a href="#!" className="text-white">
-                    Link 4
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            <div className="col-lg-3 col-md-6 mb-4 mb-md-0">
-              <h5 className="text-uppercase">Links</h5>
-
-              <ul className="list-unstyled mb-0">
-                <li>
-                  <a href="#!" className="text-white">
-                    Link 1
-                  </a>
-                </li>
-                <li>
-                  <a href="#!" className="text-white">
-                    Link 2
-                  </a>
-                </li>
-                <li>
-                  <a href="#!" className="text-white">
-                    Link 3
-                  </a>
-                </li>
-                <li>
-                  <a href="#!" className="text-white">
-                    Link 4
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            <div className="col-lg-3 col-md-6 mb-4 mb-md-0">
-              <h5 className="text-uppercase">Links</h5>
-
-              <ul className="list-unstyled mb-0">
-                <li>
-                  <a href="#!" className="text-white">
-                    Link 1
-                  </a>
-                </li>
-                <li>
-                  <a href="#!" className="text-white">
-                    Link 2
-                  </a>
-                </li>
-                <li>
-                  <a href="#!" className="text-white">
-                    Link 3
-                  </a>
-                </li>
-                <li>
-                  <a href="#!" className="text-white">
-                    Link 4
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </section>
       </div>
 
       {/* Copyright*/}
       <div className="text-center p-3 footer-bg">
-        © {new Date().getFullYear()} Copyright:  
-        <a className="text-white" href="https://github.com/BrokaX/">
-          Abbes
-        </a> & <a className="text-white" href="https://github.com/zopapami/">
-          Zoi
-        </a> 
+        Copyright © Business Card Maker, 2023 
       </div>
-      <div><img className="logo-banner-footer" src={logoBanner} alt="logo banner" /></div>
     </footer>
   );
 }

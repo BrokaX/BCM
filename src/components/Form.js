@@ -1,16 +1,111 @@
-import React from "react";
-import { useState } from "react";
-// import FirebaseService from "../services/firebase";
-// import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import Carousel from "./Carousel";
+import React, { useState } from "react";
 import { QRCodeCanvas } from "qrcode.react";
-import FooterMain from "./FooterMain";
-export default function CardForm() {
+import { addDoc, collection } from "firebase/firestore";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+// Components
+import Carousel from "./Carousel";
+// Services
+import FirebaseService from "../services/firebase";
 
+export default function Form() {
+  // Card
+  const initialCardState = {
+    id: null,
+    title: "",
+    name: "",
+    email: "",
+    phone: null,
+    website: "",
+    youtube: "",
+    facebook: "",
+    twitter: "",
+    instagram: "",
+    whatsapp: null,
+    imageURL: "",
+  };
+
+  const [card, setCard] = useState(initialCardState);
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setCard({ ...card, [name]: value });
+  };
+
+  // Create (CRUD)
+  const saveCard = async (e) => {
+    e.preventDefault();
+    try {
+      await addDoc(collection(FirebaseService.db, "cards"), {
+        id: card.id,
+        title: card.title,
+        name: card.name,
+        email: card.email,
+        phone: card.phone,
+        website: card.website,
+        youtube: card.youtube,
+        facebook: card.facebook,
+        twitter: card.twitter,
+        instagram: card.instagram,
+        whatsapp: card.whatsapp,
+        imageURL: card.imageURL,
+      });
+      setSubmitted(true);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const newCard = () => {
+    setCard(initialCardState);
+    setImage(null);
+    setSubmitted(false);
+  };
+  // End Card
+
+  // Imaqe
   const [image, setImage] = useState(null);
-  const [url, setUrl] = useState("");
+  const [picPreview, setPicPreview] = useState(null);
 
-  const gnerateQR = (e) => {
+  const handleImage = (e) => {
+    const file = e.target.files[0];
+    setPicPreview(URL.createObjectURL(file));
+    if (file) {
+      setImage(file);
+    }
+  };
+
+  const handleImageSubmit = () => {
+    const imageRef = ref(FirebaseService.storage, image.name); // create a storage reference from our storage service
+    uploadBytes(imageRef, image)
+      .then(() => {
+        getDownloadURL(imageRef)
+          .then((data) => {
+            card.imageURL = data;
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+        console.log("file uploaded!");
+        setImage(null);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  // End Image
+
+  // Carousel Slide
+  const slides = [
+    { url: "./assets/cards/Sample-card-1.png", title: "Card 1" },
+    { url: "./assets/cards/Sample-card-2.png", title: "Card 2" },
+    { url: "./assets/cards/Sample-card-3.png", title: "Card 3" },
+  ];
+  // End Carousel Slide
+
+  // Qr Code
+  const [url, setUrl] = useState("");
+  const generateQR = (e) => {
     setUrl(e.target.value);
   };
   const qrcode = (
@@ -22,197 +117,177 @@ export default function CardForm() {
       level={"H"}
     />
   );
-  const [user, setUser] = useState({
-    name: "",
-    slogan: "",
-    email: "",
-    phone: "",
-    youtube: "",
-    facebook: "",
-    twitter: "",
-    instagram: "",
-    website: "",
-    whatsapp: "",
-  });
-  const [picPreview, setPicpreview] = useState(null);
-  const handleImage = (e) => {
-    const file = e.target.files[0];
-    setPicpreview(URL.createObjectURL(file));
-    setImage(e.target.files[0]);
-  };
-  let name, value;
-  const getUserData = (event) => {
-    name = event.target.name;
-    value = event.target.value;
-    setUser({ ...user, [name]: value });
-  };
   function forQR() {
-    return Object.values(user);
+    return Object.values(card);
   }
+  // End Qr Code
+
+  //Render
   return (
-    
-    <div className="Form-cover">
-      <section>
+    <div className="Form-cover text-light">
       <div className="row no-gutters Business-card-container">
         <div className="col Business-card-form">
-          <h1 className="form-title">Create-Business Card</h1>
-          <form className=" row g-3" method="POST">
-            <div className="col-md-6 ">
-              <label htmlFor="title" className="Contact-us-label">
-                Title of Business
+          <h1>Create Business Card</h1>
+          <form className="row g-3 mb-3" method="POST">
+            <div className="col-md-6">
+              <label htmlFor="title" className="form-label">
+                Business Title
               </label>
               <input
-                onChange={getUserData}
+                onChange={handleInputChange}
                 type="text"
-                name="slogan"
-                defaultValue={user.slogan}
-                placeholder="Title"
-                className="Contact-us-input form-control"
+                name="title"
+                defaultValue={card.title}
+                placeholder="Business Title"
+                className="form-control"
                 id="title"
               />
             </div>
             <div className="col-md-6">
-              <label htmlFor="name" className="Contact-us-label">
-                Name
+              <label htmlFor="name" className="form-label">
+                Business Owner
               </label>
               <input
-                onChange={getUserData}
+                onChange={handleInputChange}
                 type="text"
                 name="name"
-                defaultValue={user.name}
-                placeholder="Required"
-                className="Contact-us-input form-control"
-                id="slogan"
+                defaultValue={card.name}
+                placeholder="Business Owner"
+                className="form-control"
+                id="name"
               />
             </div>
             <div className="col-md-6">
-              <label htmlFor="inputEmail4" className="Contact-us-label">
-                Email
+              <label htmlFor="email" className="form-label">
+                Email Address
               </label>
               <input
-                onChange={getUserData}
+                onChange={handleInputChange}
                 type="email"
                 name="email"
-                defaultValue={user.email}
-                className="Contact-us-input form-control"
-                id="inputEmail4"
-                placeholder="email@example.com"
+                defaultValue={card.email}
+                className="form-control"
+                id="email"
+                placeholder="example@email.com"
               />
             </div>
             <div className="col-md-6">
-              <label htmlFor="phone" className="Contact-us-label">
-                Phone
+              <label htmlFor="phone" className="form-label">
+                Phone Number
               </label>
               <input
-                onChange={getUserData}
-                type="tel"
+                onChange={handleInputChange}
+                type="number"
                 name="phone"
-                defaultValue={user.phone}
-                placeholder="Phone-Number"
-                className="Contact-us-input form-control"
+                defaultValue={card.phone}
+                placeholder="Phone Number"
+                className="form-control"
                 id="phone"
               />
             </div>
             <div className="col-md-6">
-              <label htmlFor="youtube" className="Contact-us-label">
+              <label htmlFor="website" className="form-label">
+                Website
+              </label>
+              <input
+                onChange={handleInputChange}
+                type="text"
+                name="website"
+                defaultValue={card.website}
+                className="form-control"
+                id="website"
+                placeholder="https://www.example.com/"
+              />
+            </div>
+            <div className="col-md-6">
+              <label htmlFor="youtube" className="form-label">
                 Youtube
               </label>
               <input
-                onChange={getUserData}
+                onChange={handleInputChange}
                 type="text"
                 name="youtube"
-                defaultValue={user.youtube}
-                placeholder="Youtube Channel Url"
-                className="Contact-us-input form-control"
+                defaultValue={card.youtube}
+                placeholder="https://www.youtube.com/"
+                className="form-control"
                 id="youtube"
               />
             </div>
             <div className="col-md-6">
-              <label htmlFor="insta" className="Contact-us-label">
-                Instagram
+              <label htmlFor="facebook" className="form-label">
+                Facebook
               </label>
               <input
-                onChange={getUserData}
+                onChange={handleInputChange}
                 type="text"
-                name="instagram"
-                defaultValue={user.instagram}
-                placeholder="Optional"
-                className="Contact-us-input form-control"
-                id="insta"
+                className="form-control"
+                defaultValue={card.facebook}
+                name="facebook"
+                id="facebook"
+                placeholder="https://www.facebook.com/"
               />
             </div>
             <div className="col-md-6">
-              <label htmlFor="twitter" className="Contact-us-label">
+              <label htmlFor="twitter" className="form-label">
                 Twitter
               </label>
               <input
-                onChange={getUserData}
+                onChange={handleInputChange}
                 type="text"
                 name="twitter"
-                defaultValue={user.twitter}
-                placeholder="Optional"
-                className="Contact-us-input form-control"
+                defaultValue={card.twitter}
+                placeholder="https://twitter.com/"
+                className="form-control"
                 id="twitter"
               />
             </div>
             <div className="col-md-6">
-              <label htmlFor="websiteLink" className="Contact-us-label">
-                Website Link
+              <label htmlFor="instagram" className="form-label">
+                Instagram
               </label>
               <input
-                onChange={getUserData}
+                onChange={handleInputChange}
                 type="text"
-                name="website"
-                defaultValue={user.website}
-                className="Contact-us-input form-control"
-                id="websiteLink"
-                placeholder="https://www.example.com"
+                name="instagram"
+                defaultValue={card.instagram}
+                placeholder="https://www.instagram.com/"
+                className="form-control"
+                id="instagram"
               />
             </div>
             <div className="col-md-6">
-              <label htmlFor="facebook" className="Contact-us-label">
-                Facebook Link
-              </label>
-              <input
-                onChange={getUserData}
-                type="text"
-                className="Contact-us-input form-control"
-                defaultValue={user.facebook}
-                name="facebook"
-                id="facebook"
-                placeholder="https://www.facebook.com//"
-              />
-            </div>
-            <div className="col-md-6">
-              <label htmlFor="whatsapp" className="Contact-us-label">
+              <label htmlFor="whatsapp" className="form-label">
                 WhatsApp
               </label>
               <input
-                onChange={getUserData}
-                type="tel"
-                className="Contact-us-input form-control"
+                onChange={handleInputChange}
+                type="number"
+                className="form-control"
                 name="whatsapp"
-                defaultValue={user.whatsapp}
+                defaultValue={card.whatsapp}
                 id="whatsapp"
-                placeholder="Phone-number"
+                placeholder="WhatsApp Number"
               />
             </div>
           </form>
-          <div className="" id="carder">
+          <div id="carder">
             <div className="mb-3">
-              <label htmlFor="formFile" className="Contact-us-label">
-                Choose a Logo File
+              <label htmlFor="formFile" className="form-label">
+                Logo
               </label>
               <input
                 accept="images/*"
                 onChange={handleImage}
                 multiple={false}
-                className="Contact-us-input form-control"
+                className="form-control"
                 type="file"
                 id="formFile"
               />
-
-              <button id="upload" className="Contact-us-submit float-end">
+              <button
+                id="upload"
+                className="btn btn-secondary my-2 float-end"
+                onClick={handleImageSubmit}
+              >
                 Upload
               </button>
             </div>
@@ -220,107 +295,105 @@ export default function CardForm() {
         </div>
 
         {/* Card Preview */}
-
         <div className="col Business-card-preview">
           <div className="Card-preview">
-            <h1 className="form-title">Card Preview</h1>
+            <h1>Card Preview</h1>
             <div className="Business-card-preview-container">
               <Carousel />
-
               <div className="Card-preview-info">
-                <h4 className="User-info username">{user.name}</h4>
-                <h4 className="User-info business-title">{user.slogan}</h4>
+                <h4 className="User-info business-title">{card.title}</h4>
+                <h4 className="User-info username">{card.name}</h4>
                 <h4 className="User-info user-email">
-                  {user.email ? (
-                    <>
+                  {card.email ? (
+                    <div>
                       <i className="fa-sharp fa-solid fa-envelope">
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                       </i>
-                      {user.email}
-                    </>
+                      {card.email}
+                    </div>
                   ) : (
                     ""
                   )}
                 </h4>
                 <h4 className="User-info user-phone">
-                  {user.phone ? (
-                    <>
+                  {card.phone ? (
+                    <div>
                       <i className="fa-solid fa-phone-volume">
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                       </i>
-                      {user.phone}
+                      {card.phone}
+                    </div>
+                  ) : (
+                    ""
+                  )}
+                </h4>
+                <h4 className="User-info user-website">
+                  {card.website ? (
+                    <>
+                      <i className="fa-solid fa-globe">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      </i>
+                      {card.website}
                     </>
                   ) : (
                     ""
                   )}
                 </h4>
                 <h4 className="User-info user-youtube">
-                  {user.youtube ? (
+                  {card.youtube ? (
                     <>
                       <i className="fa-brands fa-youtube">
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                       </i>
-                      {user.youtube}
+                      {card.youtube}
                     </>
                   ) : (
                     ""
                   )}
                 </h4>
                 <h4 className="User-info user-facebook">
-                  {user.facebook ? (
+                  {card.facebook ? (
                     <>
                       <i className="fa-brands fa-facebook">
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                       </i>
-                      {user.facebook}
+                      {card.facebook}
                     </>
                   ) : (
                     ""
                   )}
                 </h4>
                 <h4 className="User-info user-twitter">
-                  {user.twitter ? (
+                  {card.twitter ? (
                     <>
                       <i className="fa-brands fa-twitter">
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                       </i>
-                      {user.twitter}
+                      {card.twitter}
                     </>
                   ) : (
                     ""
                   )}
                 </h4>
                 <h4 className="User-info user-instagram">
-                  {user.instagram ? (
+                  {card.instagram ? (
                     <>
                       <i className="fa-brands fa-instagram">
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                       </i>
-                      {user.instagram}
-                    </>
-                  ) : (
-                    ""
-                  )}
-                </h4>
-                <h4 className="User-info user-website">
-                  {user.website ? (
-                    <>
-                      <i className="fa-solid fa-globe">
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      </i>
-                      {user.website}
+                      {card.instagram}
                     </>
                   ) : (
                     ""
                   )}
                 </h4>
                 <h4 className="User-info user-whatsapp">
-                  {user.whatsapp ? (
+                  {card.whatsapp ? (
                     <>
                       <i className="fa-brands fa-whatsapp">
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                       </i>
-                      {user.whatsapp}
+                      {card.whatsapp}
                     </>
                   ) : (
                     ""
@@ -349,13 +422,25 @@ export default function CardForm() {
               </div>
             </div>
           </div>
-
-          {/* Cards Selection */}
-      
+        </div>
+        <div className="d-flex justify-content-between">
+          <button onClick={saveCard} className="Contact-us-submit me-md-2">
+            Save Changes
+          </button>
+          {submitted &&
+            <div className="alert alert-dismissible fade show bg-secondary" role="alert">
+              Changes Saved to your Library   
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="alert"
+                aria-label="Close"
+                onClick={newCard} >
+              </button>
+            </div>
+          }
         </div>
       </div>
-      </section>
-      
     </div>
   );
-}
+};

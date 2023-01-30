@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Popup from "reactjs-popup";
 import { onAuthStateChanged, signOut } from "firebase/auth";
+// Components
+import Login from "./Login";
+import Register from "./Register";
 // Services
 import FirebaseService from "../services/firebase";
 // Images 
 import logo from "../assets/logo.png";
-import logoBanner from "../assets/logo-banner.png"
+
 
 function NavBar() {
   const [isLoggedIn, setIsLoggedIn] = useState(undefined);
@@ -14,12 +18,15 @@ function NavBar() {
     onAuthStateChanged(FirebaseService.auth, (user) => {
       if (user) {
         // Registered
+        setIsLoggedIn(true);
+        const uid = user.uid;
         //const displayName = user.displayName;
         //const email = user.email;
         //const photoURL = user.photoURL;
-        setIsLoggedIn(true);
-        const uid = user.uid;
         console.log("uid:", uid);
+        //console.log("displayName:", displayName);
+        //console.log("email:", email);
+        //console.log("photoURL:", photoURL);
       } else {
         // Logged out
         setIsLoggedIn(false);
@@ -52,23 +59,19 @@ function NavBar() {
         {isLoggedIn ? (
         <div className="Login-buttons">
           <button className="User-button" onClick={handleLogout} >
-            <Link  style={{color: 'black' , fontSize:'18px', background:'none'}} to="/login" className="App-Link User-button">
-              Logout
+            <Link to="/login" className="App-Link User-button">
+              <h5 className="text-dark">Logout</h5>
             </Link>
           </button>
         </div>
         ) : (
         <div className="Login-buttons">
-          <button className="User-button">
-            <Link  style={{color: 'black' , fontSize:'18px', background:'none'}} to="/login" className="App-Link">
-              <h5>Login</h5> 
-            </Link>
-          </button>
-          <button className="User-button">
-            <Link  style={{color: 'black' , fontSize:'18px', background:'none'}} to="/register" className="App-Link">
-              <h5 className="text-dark">Register</h5>
-            </Link>
-          </button>
+          <Popup trigger={<button className="User-button text-dark fs-5 fw-bold">Login</button>} position="left top">
+            <div className="card-btn"><Login /></div>
+          </Popup>
+          <Popup trigger={<button className="User-button text-dark fs-5 fw-bold">Register</button>} position="left top">
+            <div className="card-btn"><Register /></div>
+          </Popup>
         </div>
         )}
       </div>
@@ -81,9 +84,9 @@ function NavBar() {
             <h5 className="Nav-text2">Home</h5>
           </Link>
           <Link to="/form" className="App-Link">
-            <h5 className="Nav-text2">Create Card</h5>
+            <h5 className="Nav-text2">Make your Card</h5>
           </Link>
-          <Link to="/library" className="App-Link">
+          <Link to="/library-example" className="App-Link">
             <h5 className="Nav-text2">Library</h5>
           </Link>
           <Link to="/profile" className="App-Link">
@@ -112,7 +115,7 @@ function NavBar() {
           </Link>
         </div>
         )}
-        <div><img className="logo-banner" src={logoBanner} alt="logo banner" /></div>
+        <div></div>
       </div>
     </div>
   );

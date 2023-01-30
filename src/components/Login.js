@@ -23,8 +23,7 @@ const Login = () => {
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        alert("invalid login name or password");
-        console.err(errorCode, errorMessage);
+        console.log(errorCode, errorMessage);
       }); 
   };
   
@@ -42,7 +41,7 @@ const Login = () => {
                 onChange={(e) => setEmail(e.target.value)}
                 required                                  
                 placeholder="Email address"   
-                className="Contact-us-input"             
+                className="Contact-us-input-btn"             
               />
             </div>
             <div className="mb-3 d-flex flex-column">
@@ -54,10 +53,10 @@ const Login = () => {
                 onChange={(e) => setPassword(e.target.value)} 
                 required                                 
                 placeholder="Password"    
-                className="Contact-us-input"           
+                className="Contact-us-input-btn"           
               />
             </div>                 
-            <button type="submit"  className="Contact-us-submit" onClick={onLogin} >      
+            <button type="submit"  className="Contact-us-submit-btn" onClick={onLogin} >      
               Login                                                                  
             </button>                              
           </form>
@@ -66,7 +65,6 @@ const Login = () => {
             <NavLink to="/register" className="text-decoration-none">Register</NavLink>
           </h6>                           
         </div>
-      <FooterMain />
     </main>
   );
 };
