@@ -18,7 +18,12 @@ export default function Carousel() {
     const newIndex = index + 1;
     setIndex(newIndex >= length ? 0 : newIndex);
   };
-
+  let imgSrc;
+const handleChange= () => {
+  for(let i = 0; i < slides.length; i++){
+    return imgSrc =slides[i];
+  }
+}
   let position = slides[index].toString();
 
   // Render
@@ -38,6 +43,7 @@ export default function Carousel() {
                       src={[image]}
                       key={length}
                       alt="card preview"
+                      onClick={(e) => {handleChange(e.target).then (console.log(imgSrc))} }
                     />
                   );
                 })}

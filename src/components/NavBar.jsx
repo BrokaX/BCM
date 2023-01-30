@@ -9,6 +9,7 @@ import Register from "./Register";
 import FirebaseService from "../services/firebase";
 // Images 
 import logo from "../assets/logo.png";
+import logoBanner from "../assets/logo-banner.png";
 
 
 function NavBar() {
@@ -115,7 +116,7 @@ function NavBar() {
           </Link>
         </div>
         )}
-        <div></div>
+        <div> <img className="logo-banner" src={logoBanner} alt="logo"/> </div>
       </div>
     </div>
   );

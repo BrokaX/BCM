@@ -1,5 +1,5 @@
 import React from "react";
-
+import logoBanner from "../assets/logo-banner.png";
 function FooterLandingPage() {
   return (
     <footer className="mt-auto bg-dark text-center text-white">
@@ -97,6 +97,7 @@ function FooterLandingPage() {
       <div className="text-center p-3 footer-bg">
         Copyright © Business Card Maker, 2023 
       </div>
+      <img className="logo-banner-footer" src={logoBanner} alt="logo"/>
     </footer>
   );
 }

@@ -14,6 +14,8 @@ import Form from "./components/Form";
 import LibraryExample from "./components/LibraryExample";
 import Card from "./components/Card";
 import Profile from "./components/Profile";
+import About from "./components/About";
+import Contact from "./components/Contact";
 
 
 function App() {
@@ -32,6 +34,8 @@ function App() {
         <Route path="/library-example" element={<LibraryExample />} />
         <Route path="/library" element={<Card />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
       </Routes>
     </div>
   );
