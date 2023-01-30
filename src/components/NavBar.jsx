@@ -5,6 +5,7 @@ import { onAuthStateChanged, signOut } from "firebase/auth";
 import FirebaseService from "../services/firebase";
 // Images 
 import logo from "../assets/logo.png";
+import logoBanner from "../assets/logo-banner.png"
 
 function NavBar() {
   const [isLoggedIn, setIsLoggedIn] = useState(undefined);
@@ -111,7 +112,7 @@ function NavBar() {
           </Link>
         </div>
         )}
-        <div></div>
+        <div><img className="logo-banner" src={logoBanner} alt="logo banner" /></div>
       </div>
     </div>
   );

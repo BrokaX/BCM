@@ -1,4 +1,5 @@
 import React from "react";
+import logoBanner from "../assets/logo-banner.png"
 
 function FooterLandingPage() {
   return (
@@ -214,6 +215,7 @@ function FooterLandingPage() {
           Zoi
         </a> 
       </div>
+      <div><img className="logo-banner-footer" src={logoBanner} alt="logo banner" /></div>
     </footer>
   );
 }

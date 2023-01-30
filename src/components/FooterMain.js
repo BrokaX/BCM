@@ -1,5 +1,5 @@
 import React from "react";
-
+import logoBanner from "../assets/logo-banner.png"
 function FooterMain() {
   return (
     <footer class="mt-auto bg-dark text-center text-white">
@@ -66,6 +66,7 @@ function FooterMain() {
           Zoi
         </a> 
       </div>
+      <div><img className="logo-banner-footer" src={logoBanner} alt="logo banner" /></div>
     </footer>
   );
 }

@@ -121,7 +121,13 @@ html {
   top: 0;
 }
 
-
+.logo-banner{
+  width: 20rem;
+  visibility: hidden;
+}
+.logo-banner-footer{
+  width: 20rem;
+}
 /************************* Landing Page ************************/
 
 .Landing-cover {
@@ -693,6 +699,10 @@ color: var(--surface-color);
     width: 80%;
     background-color: rgb(18, 20, 22, 0.773);
   }
+  .logo-banner{
+    visibility: visible;
+  }
+  
   .Nav-bar-menu {
     text-align: center;
     height: 100vh;

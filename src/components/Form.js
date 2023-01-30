@@ -5,7 +5,6 @@ import { useState } from "react";
 import Carousel from "./Carousel";
 import { QRCodeCanvas } from "qrcode.react";
 import FooterMain from "./FooterMain";
-const width = {width : '100%'}
 export default function CardForm() {
 
   const [image, setImage] = useState(null);
@@ -356,7 +355,7 @@ export default function CardForm() {
         </div>
       </div>
       </section>
-      <FooterMain style={width} />
+      
     </div>
   );
 }
