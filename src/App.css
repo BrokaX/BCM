@@ -13,6 +13,7 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 /************************* Body ************************/
 body,
 html {
@@ -42,14 +43,20 @@ html {
 }
 .User-button{
   background:  var(--surface-color) ;
-  color: white;
   width: 8rem;
+  height: 3rem;
   padding: 3%;
   margin-left: 2%;
+}
+.User-button:hover, .User-button:hover ~  h5{
+  background-color: none;
+  color: white;
+  border: solid 1px white;
 }
 .Nav-text:hover {
   text-decoration: none;
 }
+
 .Nav-text {
   font-size: 1rem;
   color: var(--surface-color);
@@ -82,7 +89,7 @@ html {
   transition: 1s ease-in-out;
   width: 100%;
   z-index: 2;
-  background-color: var(--bg1-color);
+  background-color: rgba(0, 0, 0, 0.2);
   overflow: hidden;
   display: flex;
   justify-content: space-between;
@@ -90,13 +97,12 @@ html {
   font-family: "Josefin Sans";
   font-weight: 100;
   word-spacing: 10px;
-  box-shadow: 0px 0px 36px #ffffff25;
 }
 .Nav-bar-menu {
   transition: 1s ease-in-out;
   width: 100%;
   z-index: 2;
-  background-color: rgb(26, 24, 24);
+  background-color: var(--bg1-color);
   overflow: hidden;
   display: flex;
   justify-content: space-between;
@@ -114,6 +120,7 @@ html {
   position: fixed;
   top: 0;
 }
+
 
 /************************* Landing Page ************************/
 
@@ -358,7 +365,46 @@ html {
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
 }
+/* ************************ About us page *************** */
 
+.container-about-us {
+  overflow: hidden;
+  background-attachment: fixed;
+  background-color: #e4a11b;
+}
+.about-us-text{
+  font-size: 20px;
+  color: #04233a;
+  text-align: center;
+  display: inline-block;
+  height: 34vh;
+  width: 100%;
+  padding: 5% 25% ;
+  margin: 0 auto;
+  background-color: #e4a11b;
+}
+.sliding-background {
+  background: url("./assets/scrolling-slide.png") repeat-x;
+  height: 560px;
+  width: 5076px;
+  animation: slide 60s linear infinite;
+  margin-bottom: 10%;
+}
+.about-us-map{
+  width: 100%;
+  height: 30rem;
+  margin: 0 auto;
+  filter: invert(90%);
+  margin-bottom: 10%;
+}
+@keyframes slide{
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-1692px, 0, 0);
+  }
+}
 /************************* Footer ************************/
 .footer {
   height: 50vh;
@@ -381,7 +427,21 @@ html {
 .footer-bg {
   background-color: rgba(0, 0, 0, 0.2);
 }
+.text-center a{
+  margin-left: 4px;
+}
+.text-center a:hover{
+color: var(--surface-color);
+}
 /*************** Business Card Page 'Form.js' *******************/
+.Form-cover{
+  display: flex;
+  flex-wrap: wrap;
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.6)), url('./assets/cover-bg-2.jpg');
+  background-position: bottom;
+  background-size: cover;
+  background-attachment: fixed;
+}
 .Business-card-container {
   margin: 0;
   padding: 5%;
@@ -390,7 +450,10 @@ html {
   margin: 0 2rem;
   padding: 2%;
 }
-
+.form-title{
+  color: white;
+  font-size: 30px;
+}
 .Business-card-preview {
   margin: 0 2rem;
   padding: 2%;
@@ -411,7 +474,6 @@ html {
 }
 
 .Card-preview-info {
-  border: solid red;
   padding: 5%;
   position: absolute;
   width: 100%;
@@ -512,7 +574,8 @@ html {
 }
 .carousel-images {
   display: flex;
-  align-items: center;
+  flex-direction: row;
+  align-items: flex-start;
   justify-content: center;
   width: 80%;
 }

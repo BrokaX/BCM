@@ -11,7 +11,9 @@ import NavBar from "./components/NavBar";
 import Form from "./components/Form";
 import Register from "./components/Register";
 import Login from "./components/Login";
+import Contact from "./components/Contact"
 import Profile from "./components/Profile";
+import About from "./components/About";
 //import Library from "./components/Library";
 
 function App() {
@@ -28,6 +30,8 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/About" element={<About />} />
         {/*<Route path="/library" element={<Library />} />*/}
       </Routes>
     </div>

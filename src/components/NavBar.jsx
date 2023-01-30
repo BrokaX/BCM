@@ -51,20 +51,20 @@ function NavBar() {
         {isLoggedIn ? (
         <div className="Login-buttons">
           <button className="User-button" onClick={handleLogout} >
-            <Link to="/login" className="App-Link User-button">
-              <h5 className="text-dark">Logout</h5>
+            <Link  style={{color: 'black' , fontSize:'18px', background:'none'}} to="/login" className="App-Link User-button">
+              Logout
             </Link>
           </button>
         </div>
         ) : (
         <div className="Login-buttons">
           <button className="User-button">
-            <Link to="/login" className="App-Link">
-              <h5 className="text-dark">Login</h5>
+            <Link  style={{color: 'black' , fontSize:'18px', background:'none'}} to="/login" className="App-Link">
+              <h5>Login</h5> 
             </Link>
           </button>
           <button className="User-button">
-            <Link to="/register" className="App-Link">
+            <Link  style={{color: 'black' , fontSize:'18px', background:'none'}} to="/register" className="App-Link">
               <h5 className="text-dark">Register</h5>
             </Link>
           </button>
@@ -80,7 +80,7 @@ function NavBar() {
             <h5 className="Nav-text2">Home</h5>
           </Link>
           <Link to="/form" className="App-Link">
-            <h5 className="Nav-text2">Make your Card</h5>
+            <h5 className="Nav-text2">Create Card</h5>
           </Link>
           <Link to="/library" className="App-Link">
             <h5 className="Nav-text2">Library</h5>

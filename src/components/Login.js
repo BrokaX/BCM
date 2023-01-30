@@ -23,7 +23,8 @@ const Login = () => {
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        console.log(errorCode, errorMessage);
+        alert("invalid login name or password");
+        console.err(errorCode, errorMessage);
       }); 
   };
   

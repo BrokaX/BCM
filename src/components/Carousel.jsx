@@ -5,6 +5,9 @@ export default function Carousel() {
     "./assets/cards/Sample-card-1.png",
     "./assets/cards/Sample-card-2.png",
     "./assets/cards/Sample-card-3.png",
+    "./assets/cards/Sample-card-3.png",
+    "./assets/cards/Sample-card-3.png",
+    "./assets/cards/Sample-card-3.png",
   ];
   const [index, setIndex] = useState(0);
   const length = 3;

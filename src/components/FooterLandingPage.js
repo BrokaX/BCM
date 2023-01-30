@@ -207,10 +207,12 @@ function FooterLandingPage() {
 
       {/* Copyright*/}
       <div className="text-center p-3 footer-bg">
-        © 2020 Copyright:
-        <a className="text-white" href="https://mdbootstrap.com/">
-          MDBootstrap.com
-        </a>
+        © {new Date().getFullYear()} Copyright:  
+        <a className="text-white" href="https://github.com/BrokaX/">
+          Abbes
+        </a> & <a className="text-white" href="https://github.com/zopapami/">
+          Zoi
+        </a> 
       </div>
     </footer>
   );

@@ -58,11 +58,13 @@ function FooterMain() {
 
       {/* Copyright*/}
 
-      <div class="text-center p-3 footer-bg">
-        © 2020 Copyright:
-        <a class="text-white" href="https://mdbootstrap.com/">
-          MDBootstrap.com
-        </a>
+      <div className="text-center p-3 footer-bg">
+        © {new Date().getFullYear()} Copyright:  
+        <a className="text-white" href="https://github.com/BrokaX/">
+          Abbes
+        </a> & <a className="text-white" href="https://github.com/zopapami/">
+          Zoi
+        </a> 
       </div>
     </footer>
   );
