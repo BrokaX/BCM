@@ -3,7 +3,6 @@ import React, {useState} from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import FirebaseService from "../services/firebase";
-import FooterMain from "./FooterMain";
 
 const Login = () => {
   const navigate = useNavigate();

@@ -95,31 +95,24 @@ export default function Form() {
   };
   // End Image
 
-  // Carousel Slide
-  const slides = [
-    { url: "./assets/cards/Sample-card-1.png", title: "Card 1" },
-    { url: "./assets/cards/Sample-card-2.png", title: "Card 2" },
-    { url: "./assets/cards/Sample-card-3.png", title: "Card 3" },
-  ];
+
+
   // End Carousel Slide
 
   // Qr Code
-  const [url, setUrl] = useState("");
+  const [url , setUrl] = useState("");
   const generateQR = (e) => {
     setUrl(e.target.value);
   };
   const qrcode = (
     <QRCodeCanvas
       id="qrCode"
-      value={url}
+      value={url }
       size={50}
       bgColor={"#fff"}
       level={"H"}
     />
-  );
-  function forQR() {
-    return Object.values(card);
-  }
+  ); 
   // End Qr Code
 
   //Render
@@ -176,7 +169,7 @@ export default function Form() {
                 Phone Number
               </label>
               <input
-                onChange={handleInputChange}
+                onChange={handleInputChange && generateQR}
                 type="number"
                 name="phone"
                 defaultValue={card.phone}
@@ -399,21 +392,7 @@ export default function Form() {
                     ""
                   )}
                 </h4>
-                {/* <input
-               type="text"
-               name="QRCode"
-              value={Object.values(user)}
-                onChange={gnerateQR}
-                disabled
-                hidden
-              /> */}
-                {/* <textarea
-                  value={forQR()}
-                  onChange={(e) => setUrl(e.target.url)}
-                >
-                  {this.state.text}{" "}
-                </textarea>
-                <div>{qrcode} </div> */}
+                <div className="qr-code">{qrcode} </div>
                 <img
                   className="User-profile-pic"
                   src={picPreview}

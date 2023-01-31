@@ -604,6 +604,11 @@ html {
   object-fit: cover;
   border-radius: 50%;
 }
+.qr-code{
+  position: absolute;
+  bottom: 2%;
+  right: 5%;
+}
 
 /******************* Carousel ***********************/
 
