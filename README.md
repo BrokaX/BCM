@@ -1,6 +1,6 @@
 React Firebase Business Card Maker
 ==================================
-[![N|Solid](https://www.vectorlogo.zone/logos/reactjs/reactjs-ar21.svg)](https://www.vectorlogo.zone/logos/reactjs/reactjs-ar21.svg)[![Build Status](https://www.vectorlogo.zone/logos/firebase/firebase-ar21.svg)](FireBase)
+[![N|Solid](https://www.vectorlogo.zone/logos/reactjs/reactjs-ar21.svg)](React)[![Build Status](https://www.vectorlogo.zone/logos/firebase/firebase-ar21.svg)](FireBase)
 
 Overview
 --------
