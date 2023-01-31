@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 
 export default function Carousel() {
-  const length = 3;
+  const length = 5;
   const slides = [
     "./assets/cards/Sample-card-1.png",
     "./assets/cards/Sample-card-2.png",
     "./assets/cards/Sample-card-3.png",
+    "./assets/cards/Sample-card-4.png",
+    "./assets/cards/Sample-card-5.png",
   ];
 
   const [index, setIndex] = useState(0);

@@ -35,14 +35,14 @@ html {
 .App-Link:hover {
   background: rgb(201, 186, 186, 0.2);
 }
-.Login-buttons{
+.Login-buttons {
   margin-right: 2%;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
 }
-.User-button{
-  background:  var(--surface-color) ;
+.User-button {
+  background: var(--surface-color);
   color: white;
   width: 8rem;
   padding: 3%;
@@ -50,7 +50,8 @@ html {
   border: none;
   border-radius: 8px;
 }
-.User-button:hover, .User-button:hover ~  h5{
+.User-button:hover,
+.User-button:hover ~ h5 {
   background-color: none;
   color: white;
   border: solid 1px white;
@@ -123,11 +124,11 @@ html {
   top: 0;
 }
 
-.logo-banner{
+.logo-banner {
   width: 20rem;
   visibility: hidden;
 }
-.logo-banner-footer{
+.logo-banner-footer {
   width: 20rem;
 }
 /************************* Landing Page ************************/
@@ -336,7 +337,8 @@ html {
   color: white;
   padding: 1%;
 }
-.Contact-us-input, .form-control{
+.Contact-us-input,
+.form-control {
   border: solid 1px var(--surface-color);
   color: white;
   padding: 1% 2% 1% 2%;
@@ -403,14 +405,14 @@ html {
   background-attachment: fixed;
   background-color: #e4a11b;
 }
-.about-us-text{
+.about-us-text {
   font-size: 20px;
   color: #04233a;
   text-align: center;
   display: inline-block;
   height: 34vh;
   width: 100%;
-  padding: 5% 25% ;
+  padding: 5% 25%;
   margin: 0 auto;
   background-color: #e4a11b;
 }
@@ -421,14 +423,14 @@ html {
   animation: slide 60s linear infinite;
   margin-bottom: 10%;
 }
-.about-us-map{
+.about-us-map {
   width: 100%;
   height: 30rem;
   margin: 0 auto;
   filter: invert(90%);
   margin-bottom: 10%;
 }
-@keyframes slide{
+@keyframes slide {
   0% {
     transform: translate3d(0, 0, 0);
   }
@@ -458,17 +460,18 @@ html {
 .footer-bg {
   background-color: rgba(0, 0, 0, 0.2);
 }
-.text-center a{
+.text-center a {
   margin-left: 4px;
 }
-.text-center a:hover{
-color: var(--surface-color);
+.text-center a:hover {
+  color: var(--surface-color);
 }
 /*************** Business Card Page 'Form.js' *******************/
-.Form-cover{
+.Form-cover {
   display: flex;
   flex-wrap: wrap;
-  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.6)), url('./assets/cover-bg-2.jpg');
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.6)),
+    url("./assets/cover-bg-2.jpg");
   background-position: bottom;
   background-size: cover;
   background-attachment: fixed;
@@ -481,7 +484,7 @@ color: var(--surface-color);
   margin: 0 2rem;
   padding: 2%;
 }
-.form-title{
+.form-title {
   color: white;
   font-size: 30px;
 }
@@ -489,7 +492,7 @@ color: var(--surface-color);
   margin: 0 2rem;
   padding: 2%;
 }
-.Business-card-preview h1{
+.Business-card-preview h1 {
   margin-bottom: 6rem;
 }
 .Business-card-preview-container {
@@ -606,6 +609,7 @@ color: var(--surface-color);
 
 .BC-templates {
   position: relative;
+  left: 10%;
 }
 .carousel-images {
   display: flex;
@@ -650,11 +654,11 @@ color: var(--surface-color);
   border: solid 1px var(--surface-color);
   right: 0;
 }
-.Slide-previous:hover, .Slide-next:hover{
-  opacity: .6;
+.Slide-previous:hover,
+.Slide-next:hover {
+  opacity: 0.6;
 }
-.Slide-previous:active{
-
+.Slide-previous:active {
 }
 /* Animations*/
 
@@ -728,10 +732,10 @@ color: var(--surface-color);
     width: 80%;
     background-color: rgb(18, 20, 22, 0.773);
   }
-  .logo-banner{
+  .logo-banner {
     visibility: visible;
   }
-  
+
   .Nav-bar-menu {
     text-align: center;
     height: 100vh;
@@ -782,21 +786,76 @@ color: var(--surface-color);
   -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
   -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-  height: 35rem;
-  width: 35rem;
+  height: 60vh;
+  width: 50vw;
 }
-.login-register{
+.login-register {
   padding-top: 10%;
 }
-.popup-content{
-  width: 100%;
+.popup-content {
+  position: fixed;
+  left: 0;
+  right: 0;
 }
-#popup-root{
+#popup-root {
   position: absolute;
   top: 25%;
   left: -65%;
+  margin: 0 auto;
 }
-.card-btn{
-  height: 60vh;
-  width: 50vw;
+.card-btn {
+
+}
+
+/* ******************** Library *********************** */
+.library-main{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.library-body {
+  overflow-y: auto;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-column-gap: 1%;
+  grid-row-gap: 2%;
+  padding: 2%;
+  height: 67vh;
+  border-top: solid rgb(49, 49, 49);
+  border-bottom: solid rgb(49, 49, 49);
+  background: linear-gradient(rgba(41, 35, 5, 0.6), rgba(0, 0, 0, 0.6)),
+  url("./assets/Landing-BG.jpg");
+  background-position: center;
+  background-attachment: fixed;
+}
+.library-card-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.library-card-container img {
+  width: 100%;
+  margin: 0 auto;
+  border: solid rgb(37, 37, 37);
+
+}
+.library-edit-btn, .library-delete-btn {
+  display: inline-block;
+  margin: 5% 8%;
+  padding: 1% 1%;
+  width: 6vw;
+  border-radius: 25px;
+  color: white;
+  border: solid rgb(37, 37, 37);
+}
+.library-edit-btn:hover, .library-delete-btn:hover{
+background: none;
+color: #e4a11b;
+border: solid 1px #e4a11b;
+}
+.library-delete-btn{
+ background: rgba(175, 11, 11, 0.445);
+}
+.library-edit-btn{
+ background: rgba(25, 175, 11, 0.5);
 }
