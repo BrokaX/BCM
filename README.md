@@ -25,7 +25,7 @@ Getting Started
 
 ### Installation
 
-1.  Clone the repository: `https://github.com/Abbes-Zoi-Org/Legacy-Project.git`
+1.  Clone the repository: `https://github.com/BrokaX/BCM`
 2.  Navigate to the project directory: `cd Legacy-Project`
 3.  Install the required packages: `npm install packages`
 4.  Create a Firebase project and replace the placeholder values in `\src\services\firebase.js` with your Firebase configuration
