@@ -594,14 +594,18 @@ html {
   left: 50%;
   top: 97%;
 }
-
-.User-profile-pic {
+.User-profile-pic-container{
+  width: 4em;
+  height: 4em;
   position: absolute;
-  top: 1rem;
-  right: 1rem;
-  width: 15%;
-  height: calc(70px + 5%);
-  object-fit: cover;
+  top: .5em;
+  right: 1em;
+  /* transform: translate(-50%, -50%); */
+}
+.User-profile-pic {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
   border-radius: 50%;
 }
 .qr-code{
@@ -610,61 +614,7 @@ html {
   right: 5%;
 }
 
-/******************* Carousel ***********************/
 
-.BC-templates {
-  position: relative;
-  left: 10%;
-}
-.carousel-images {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: center;
-  width: 80%;
-}
-.carousel {
-  overflow: hidden;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  padding: 2% 0;
-  display: flex;
-}
-.carousel img {
-  display: inline-flex;
-  margin: 1%;
-  width: 20%;
-  padding: 0 1%;
-  cursor: pointer;
-  transition: transform 0.2s;
-}
-.carousel img:hover {
-  transform: scale(0.9);
-}
-.Slide-previous {
-  background: var(--surface-color);
-  color: rgb(27, 23, 23);
-  position: absolute;
-  padding: 1%;
-  left: 0;
-  border: solid 1px var(--surface-color);
-}
-.Slide-next {
-  background: var(--surface-color);
-  color: rgb(27, 23, 23);
-  position: absolute;
-  padding: 1%;
-  border: solid 1px var(--surface-color);
-  right: 0;
-}
-.Slide-previous:hover,
-.Slide-next:hover {
-  opacity: 0.6;
-}
-.Slide-previous:active {
-}
 /* Animations*/
 
 @keyframes shake {
@@ -773,10 +723,8 @@ html {
   max-width: 300px;
   margin: auto;
 }
-.edit-form {
-  max-width: 300px;
-  margin: auto;
-}
+
+
 .card-btn {
   position: relative;
   display: block;
@@ -812,55 +760,3 @@ html {
 
 }
 
-/* ******************** Library *********************** */
-.library-main{
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-.library-body {
-  overflow-y: auto;
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-column-gap: 1%;
-  grid-row-gap: 2%;
-  padding: 2%;
-  height: 67vh;
-  border-top: solid rgb(49, 49, 49);
-  border-bottom: solid rgb(49, 49, 49);
-  background: linear-gradient(rgba(41, 35, 5, 0.6), rgba(0, 0, 0, 0.6)),
-  url("./assets/Landing-BG.jpg");
-  background-position: center;
-  background-attachment: fixed;
-}
-.library-card-container {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-}
-.library-card-container img {
-  width: 100%;
-  margin: 0 auto;
-  border: solid rgb(37, 37, 37);
-
-}
-.library-edit-btn, .library-delete-btn {
-  display: inline-block;
-  margin: 5% 8%;
-  padding: 1% 1%;
-  width: 6vw;
-  border-radius: 25px;
-  color: white;
-  border: solid rgb(37, 37, 37);
-}
-.library-edit-btn:hover, .library-delete-btn:hover{
-background: none;
-color: #e4a11b;
-border: solid 1px #e4a11b;
-}
-.library-delete-btn{
- background: rgba(175, 11, 11, 0.445);
-}
-.library-edit-btn{
- background: rgba(25, 175, 11, 0.5);
-}

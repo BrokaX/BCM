@@ -1,0 +1,24 @@
+.main__card__container{
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: aliceblue;
+  width: 600px;
+  height: 800px;
+}
+
+.edit__card__form__container{
+  width: 100%;
+  height: 80%;
+  border: solid lime;
+}
+.edit__card__form{
+  padding: 1% 2%;
+  display: grid;
+  grid-template-columns: 300px 2fr;
+  gap: 2%;
+}
+
+.card__column{
+
+}

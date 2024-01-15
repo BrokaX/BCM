@@ -7,10 +7,10 @@ import {
   query,
 } from "firebase/firestore";
 // Components
-import Card from "./Card.js";
-import FooterMain from "./FooterMain.js";
+import Card from "../Card.js";
+import FooterMain from "../FooterMain.js";
 // Services
-import FirebaseService from "../services/firebase.js";
+import FirebaseService from "../../services/firebase.js";
 
 const Library = () => {
   const [cards, setCards] = useState([]);
@@ -19,24 +19,13 @@ const Library = () => {
 
   useEffect(() => {
     const q = query(
-      collection(FirebaseService.db, "cards"),
-      orderBy("created", "desc")
+      collection(FirebaseService.db, 'cards'),
+      orderBy('created', 'desc')
     );
     onSnapshot(q, (querySnapshot) => {
       setCards(
         querySnapshot.docs.map((doc) => ({
-          id: doc.id,
-          title: doc.title,
-          name: doc.name,
-          email: doc.email,
-          phone: doc.phone,
-          website: doc.website,
-          youtube: doc.youtube,
-          facebook: doc.facebook,
-          twitter: doc.twitter,
-          instagram: doc.instagram,
-          whatsapp: doc.whatsapp,
-          imageURL: doc.imageURL,
+         ...doc.data()
         }))
       );
     });

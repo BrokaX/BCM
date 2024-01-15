@@ -1,0 +1,58 @@
+/* ******************** Library *********************** */
+.library-main{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.library-body {
+  width: 100%;
+  overflow-y: auto;
+  height: 67vh;
+  border-top: solid rgb(49, 49, 49);
+  border-bottom: solid rgb(49, 49, 49);
+  background: linear-gradient(rgba(41, 35, 5, 0.6), rgba(0, 0, 0, 0.6)),
+  url("../../assets/Landing-BG.jpg");
+  background-position: center;
+  background-attachment: fixed;
+}
+.library-card-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-column-gap: 1%;
+  grid-row-gap: 2%;
+}
+.card__container{
+  position: relative;
+  border: solid lime;
+  width: 25em;
+  height: 15em;
+  background-position: center;
+  background-size: cover;
+
+}
+
+
+.library-edit-btn, .library-delete-btn {
+  display: inline-block;
+  margin: 5% 8%;
+  padding: 1% 1%;
+  width: 6vw;
+  border-radius: 25px;
+  color: white;
+  border: solid rgb(37, 37, 37);
+}
+.library-edit-btn:hover, .library-delete-btn:hover{
+background: none;
+color: #e41b1b;
+border: solid 1px #e4a11b;
+}
+.library-delete-btn{
+ background: rgba(175, 11, 11, 0.445);
+}
+.library-edit-btn{
+ background: rgba(25, 175, 11, 0.5);
+}
+
+.selected__card{
+  border: solid green;
+}

@@ -70,27 +70,27 @@ const Card = (props) => {
   return (
     <div>
       {currentCard && (
-        <div className="edit-form">
-          <h4>Card</h4>
+        <div className='edit-form'>
+          <h4>{currentCard.title}</h4>
           <form>
-            <div className="form-group">
-              <label htmlFor="name">Name</label>
+            <div className='form-group'>
+              <label htmlFor='name'>Name</label>
               <input
-                type="text"
-                className="form-control"
-                id="name"
-                name="name"
-                value={currentCard.title}
+                type='text'
+                className='form-control'
+                id='name'
+                name='name'
+                value={currentCard.name}
                 onChange={handleInputChange}
               />
             </div>
           </form>
-          <button className="badge badge-danger mr-2" onClick={deleteCard}>
+          <button className='badge badge-danger mr-2' onClick={deleteCard}>
             Delete
           </button>
           <button
-            type="submit"
-            className="badge badge-success"
+            type='submit'
+            className='badge badge-success'
             onClick={updateCard}
           >
             Update

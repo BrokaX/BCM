@@ -11,7 +11,7 @@ import Register from "./components/Register";
 import Login from "./components/Login";
 import LandingPage from "./components/LandingPage";
 import Form from "./components/Form";
-import LibraryExample from "./components/LibraryExample";
+import LibraryExample from "./components/Library/LibraryExample";
 import Card from "./components/Card";
 import Profile from "./components/Profile";
 import About from "./components/About";
